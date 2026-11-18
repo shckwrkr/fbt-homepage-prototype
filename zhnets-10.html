@@ -2,6 +2,7 @@
 <html lang="uk">
 <head>
 <meta charset="utf-8">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Жнець 10 Ascent — Flying Birds Tech</title>
 <meta name="description" content="Ударні та розвідувальні БпЛА «Жнець» від 10″ до 21″ для військових частин, волонтерів і фондів. Одеса.">
@@ -456,6 +457,7 @@ svg.lucide{width:18px;height:18px;stroke-width:1.5;flex:none}
     <nav class="nav" aria-label="Основна навігація">
       <a href="index.html#line">Лінійка</a>
       <a href="about.html">Про нас</a>
+      <a href="index.html#support">Підтримка</a>
       <a href="#contact">Контакти</a>
     </nav>
     <div class="header-actions">
@@ -468,6 +470,7 @@ svg.lucide{width:18px;height:18px;stroke-width:1.5;flex:none}
 <nav class="mobile-nav" id="mobile-nav" aria-label="Мобільна навігація">
   <a href="index.html#line">Лінійка</a>
   <a href="about.html">Про нас</a>
+  <a href="index.html#support">Підтримка</a>
   <a href="#contact">Контакти</a>
   <a class="btn btn-primary" href="#contact">Залишити запит</a>
 </nav>
@@ -656,7 +659,8 @@ svg.lucide{width:18px;height:18px;stroke-width:1.5;flex:none}
           <div class="contacts">
             <div><span class="label">Відділ продажів</span><a href="tel:+380734193736">+380 73 419 3736</a></div>
             <div><span class="label">Пошта</span><a href="mailto:flyingbirds.sales@gmail.com">flyingbirds.sales@gmail.com</a></div>
-            <div><span class="label">Технічна підтримка</span><span class="v">24/7</span></div>
+            <div><span class="label">Технічна підтримка 24/7 · WhatsApp</span><a href="https://wa.me/380000000001?text=%D0%92%D1%96%D1%82%D0%B0%D1%8E%21%20%D0%9F%D0%B8%D1%82%D0%B0%D0%BD%D0%BD%D1%8F%20%D0%B4%D0%BE%20%D1%82%D0%B5%D1%85%D0%BD%D1%96%D1%87%D0%BD%D0%BE%D1%97%20%D0%BF%D1%96%D0%B4%D1%82%D1%80%D0%B8%D0%BC%D0%BA%D0%B8." target="_blank" rel="noopener">+380 00 000 00 01</a></div>
+            <div><span class="label">Відділ продажів · WhatsApp</span><a href="https://wa.me/380000000002?text=%D0%92%D1%96%D1%82%D0%B0%D1%8E%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B4%D1%96%D0%B7%D0%BD%D0%B0%D1%82%D0%B8%D1%81%D1%8F%20%D0%BF%D1%80%D0%BE%20%D0%B4%D1%80%D0%BE%D0%BD%D0%B8%20%C2%AB%D0%96%D0%BD%D0%B5%D1%86%D1%8C%C2%BB." target="_blank" rel="noopener">+380 00 000 00 02</a></div>
           </div>
         </div>
 
@@ -706,7 +710,7 @@ svg.lucide{width:18px;height:18px;stroke-width:1.5;flex:none}
         <h4>Компанія</h4>
         <ul>
           <li><a href="about.html">Про нас</a></li>
-          <li><a href="index.html#units">Підтримка</a></li>
+          <li><a href="index.html#support">Підтримка</a></li>
           <li><a href="#contact">Контакти</a></li>
         </ul>
       </div>
@@ -725,9 +729,38 @@ svg.lucide{width:18px;height:18px;stroke-width:1.5;flex:none}
   </div>
 </footer>
 
-<script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<!-- WhatsApp widget: native popover (light dismiss + Esc, no JS) -->
+<div class="wa" id="wa">
+  <div class="wa-panel" id="wa-panel" popover="auto">
+    <div class="wa-head"><b>Напишіть нам</b></div>
+    <a class="wa-item" href="https://wa.me/380000000001?text=%D0%92%D1%96%D1%82%D0%B0%D1%8E%21%20%D0%9F%D0%B8%D1%82%D0%B0%D0%BD%D0%BD%D1%8F%20%D0%B4%D0%BE%20%D1%82%D0%B5%D1%85%D0%BD%D1%96%D1%87%D0%BD%D0%BE%D1%97%20%D0%BF%D1%96%D0%B4%D1%82%D1%80%D0%B8%D0%BC%D0%BA%D0%B8." target="_blank" rel="noopener"><i data-lucide="headset"></i><span><b>Технічна підтримка</b><span class="label">24/7 · +380 00 000 00 01</span></span><i data-lucide="arrow-up-right"></i></a>
+    <a class="wa-item" href="https://wa.me/380000000002?text=%D0%92%D1%96%D1%82%D0%B0%D1%8E%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B4%D1%96%D0%B7%D0%BD%D0%B0%D1%82%D0%B8%D1%81%D1%8F%20%D0%BF%D1%80%D0%BE%20%D0%B4%D1%80%D0%BE%D0%BD%D0%B8%20%C2%AB%D0%96%D0%BD%D0%B5%D1%86%D1%8C%C2%BB." target="_blank" rel="noopener"><i data-lucide="handshake"></i><span><b>Відділ продажів</b><span class="label">+380 00 000 00 02</span></span><i data-lucide="arrow-up-right"></i></a>
+  </div>
+  <button class="wa-btn" id="wa-btn" type="button" popovertarget="wa-panel" aria-label="Написати в WhatsApp"><svg class="wa-glyph" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/><g transform="translate(7 7) scale(.42)" stroke-width="4"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></g></svg><span class="wa-t">WhatsApp</span></button>
+</div>
+<style>
+.wa{position:fixed;right:20px;bottom:20px;z-index:60;display:flex;flex-direction:column;align-items:flex-end;gap:12px;font-family:var(--font-body)}
+.wa-btn{display:inline-flex;align-items:center;gap:10px;height:52px;padding:0 20px;border:0;cursor:pointer;background:var(--green-500);color:var(--carbon-950);font:500 14px/1 var(--font-body);letter-spacing:.04em;text-transform:uppercase;clip-path:var(--chamfer-m);box-shadow:0 8px 24px rgba(0,0,0,.35);transition:background-color var(--dur-fast) var(--ease)}
+.wa-btn:hover{background:var(--green-400)}
+.wa-btn:focus-visible{outline:2px solid var(--focus-ring);outline-offset:3px}
+.wa-panel{position:fixed;inset:auto 20px 84px auto;margin:0;padding:0;width:min(320px,calc(100vw - 40px));background:var(--carbon-900);border:1px solid var(--carbon-600);color:var(--carbon-100);box-shadow:0 16px 40px rgba(0,0,0,.45)}
+.wa-head{display:flex;flex-direction:column;gap:6px;padding:16px 20px;border-bottom:1px solid var(--carbon-700)}
+.wa-head b{font:600 16px/1.2 var(--font-display);text-transform:uppercase;letter-spacing:.05em}
+.wa-item{display:grid;grid-template-columns:24px minmax(0,1fr) 18px;gap:14px;align-items:center;padding:16px 20px;color:var(--carbon-100);text-decoration:none;border-bottom:1px solid var(--carbon-700);transition:background-color var(--dur-fast) var(--ease)}
+.wa-item:last-child{border-bottom:0}
+.wa-item:hover{background:var(--carbon-850)}
+.wa-item:hover b{color:var(--phosphor)}
+.wa-item > span{display:flex;flex-direction:column;gap:4px}
+.wa-item b{font:500 15px/1.3 var(--font-body)}
+.wa-item svg{color:var(--green-400)}
+.wa-item svg:last-child{color:var(--carbon-400);width:18px;height:18px}
+@media (max-width:560px){.wa{right:16px;bottom:16px}.wa-panel{inset:auto 16px 80px auto}.wa-btn{width:52px;padding:0;justify-content:center}.wa-t{display:none}}
+@media print{.wa{display:none}}
+</style>
+
+<script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js" integrity="sha384-hJnF5AwidE18GSWTAGHv3ByzzvfNZ1Tcx5y1UUV3WkauuMCEzBJBMSwSt/PUPXnM" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" integrity="sha384-g4NTh/Iv5PPU4xPyhEWqPcwtNXOvdaDI8LLnyYfyNZOjKJeYQyjzQ9X5275eBjpt" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" integrity="sha384-Z3REaz79l2IaAZqJsSABtTbhjgOUYyV3p90XNnAPCSHg3EMTz1fouunq9WZRtj3d" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
 (function(){
   if (window.lucide) lucide.createIcons({attrs:{'stroke-width':1.5,'stroke-linecap':'square','stroke-linejoin':'miter'}});
