@@ -428,6 +428,85 @@ svg.lucide{width:18px;height:18px;stroke-width:1.5;flex:none}
 @media (max-width:860px){.support-sec .stages{grid-template-columns:minmax(0,1fr)}.sup-stage,.sup-stage + .sup-stage{padding:24px 0;border-left:0}.sup-stage + .sup-stage{border-top:1px solid var(--border-subtle)}.always{grid-template-columns:minmax(0,1fr)}.always .btn{justify-self:start}}
 @media (max-width:560px){.always{padding:24px 20px}.always .btn{width:100%}}
 </style>
+<style>
+.hc .wrap{padding-bottom:48px}
+.hc{min-height:100dvh;display:flex;align-items:center;position:relative;overflow:hidden;isolation:isolate}.hc > .wrap{position:relative;z-index:1}.hc-bg{position:absolute;inset:0;z-index:0;pointer-events:none}.hc-bg img{position:absolute;max-width:none;right:0;top:var(--header-h,68px);width:min(60vw,1000px);height:auto;opacity:.7;filter:contrast(1.08);-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 30%),linear-gradient(0deg,transparent 0%,#000 25%);-webkit-mask-composite:source-in;mask-image:linear-gradient(90deg,transparent 0%,#000 30%),linear-gradient(0deg,transparent 0%,#000 25%);mask-composite:intersect}.hc-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--carbon-950) 0%,var(--carbon-950) 36%,rgba(7,8,7,0) 62%),linear-gradient(0deg,var(--carbon-950) 0%,var(--carbon-950) 40%,rgba(7,8,7,0) 62%),linear-gradient(180deg,var(--carbon-950) 0%,rgba(10,11,10,0) 16%)}
+.hc-head{display:flex;flex-direction:column;align-items:flex-start;margin-bottom:40px;max-width:760px}
+.hc-note{display:block;margin-top:12px;color:var(--carbon-300)}
+.hc-title{font-size:clamp(3rem,5.6vw,5.8rem)!important;line-height:.95!important;letter-spacing:.01em;white-space:nowrap}
+.hc-side{display:flex;align-items:center;gap:32px;margin-top:22px}.hc-side .lead{max-width:30ch;margin:0}
+.hc .hero-ctas{margin-top:0;flex:none}
+.hc-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.hc-tile{position:relative;display:flex;flex-direction:column;padding:16px 16px 18px;min-height:340px;background:rgba(14,16,14,.78);border:1px solid var(--carbon-700);color:var(--carbon-100);text-decoration:none;overflow:hidden;
+  background-image:linear-gradient(rgba(121,204,8,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(121,204,8,.06) 1px,transparent 1px);background-size:24px 24px;
+  transition:border-color var(--dur-fast) var(--ease),background-color var(--dur-fast) var(--ease)}
+.hc-n{color:var(--carbon-400)}
+.hc-img{flex:1;display:grid;place-items:center;margin:8px -6px 14px;min-height:170px;background:radial-gradient(circle at 50% 50%,rgba(121,204,8,.16),transparent 62%)}
+.hc-img img{width:100%;max-height:190px;object-fit:contain;filter:drop-shadow(0 18px 22px rgba(0,0,0,.55)) brightness(1.18);transition:transform .5s var(--ease)}
+.hc-img img.wire{filter:none;width:86%}
+.hc-kind{color:var(--carbon-300)}
+.hc-tile b{font:600 21px/1.1 var(--font-display);text-transform:uppercase;letter-spacing:.04em;margin-top:6px;white-space:nowrap}
+.hc-spec{font:500 13px/1.3 var(--font-mono);color:var(--green-400);margin-top:8px}
+.hc-go{position:absolute;right:14px;bottom:16px;width:32px;height:32px;display:grid;place-items:center;border:1px solid var(--carbon-600);color:var(--carbon-300);transition:all var(--dur-fast) var(--ease)}
+.hc-go svg{width:16px;height:16px}
+.hc-tile:hover{border-color:var(--green-600);background-color:rgba(20,24,20,.92)}
+.hc-tile:hover img{transform:scale(1.06) rotate(-3deg)}
+.hc-tile:hover .hc-go{background:var(--green-500);border-color:var(--green-500);color:var(--carbon-950)}
+.hc-tile:focus-visible{outline:2px solid var(--focus-ring);outline-offset:2px}
+@media (max-width:1100px){.hc-tile b{font-size:18px}}
+@media (max-width:900px){
+  .hc{align-items:flex-start}
+  .hc-bg img{width:135vw;right:-22vw;top:var(--header-h,64px);opacity:.8;-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 22%),linear-gradient(0deg,transparent 0%,#000 45%);mask-image:linear-gradient(90deg,transparent 0%,#000 22%),linear-gradient(0deg,transparent 0%,#000 45%)}
+  .hc-bg::after{background:linear-gradient(0deg,var(--carbon-950) 0%,var(--carbon-950) 62%,rgba(7,8,7,0) 80%)}
+  .hc .wrap{padding-top:calc(var(--header-h,64px) + 170px)!important}
+  .hc .wrap{padding-top:calc(var(--header-h) + 20px);padding-bottom:28px}
+  .hc-head{margin-bottom:22px}.hc-side{flex-direction:column;align-items:stretch;gap:16px;margin-top:14px}
+  .hc-title{font-size:clamp(2.6rem,12.5vw,4rem)!important;white-space:normal}
+  .hc .hero-ctas{margin-top:16px}
+  .hc-grid{grid-template-columns:repeat(5,72vw);overflow-x:auto;scroll-snap-type:x mandatory;margin-inline:calc(var(--gutter,20px) * -1);padding-inline:var(--gutter,20px);scroll-padding-inline:var(--gutter,20px);scrollbar-width:none}
+  .hc-grid::-webkit-scrollbar{display:none}
+  .hc-tile{scroll-snap-align:start;min-height:300px}
+}
+
+.hx .hc-bg::after{z-index:2;background:
+  linear-gradient(90deg,rgba(7,8,7,.94) 0%,rgba(7,8,7,.72) 28%,rgba(7,8,7,.18) 52%,rgba(7,8,7,0) 66%),
+  linear-gradient(0deg,rgba(7,8,7,.96) 0%,rgba(7,8,7,.6) 26%,rgba(7,8,7,0) 50%),
+  linear-gradient(180deg,rgba(7,8,7,.85) 0%,rgba(7,8,7,0) 18%)}
+.hx-media{position:absolute;right:0;top:0;width:max(100%,calc(2 * max(100dvh,920px)));aspect-ratio:2/1;z-index:1}
+.hx .hc-bg .hx-media img{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover;top:0;right:0;opacity:1;filter:none;-webkit-mask-image:none;mask-image:none;
+  animation:hx-drift 40s ease-in-out infinite alternate;transform-origin:70% 40%}
+@keyframes hx-drift{from{transform:scale(1)}to{transform:scale(1.05)}}
+.hx .hc-tile{background-color:rgba(10,12,10,.58);border-color:rgba(230,234,229,.09);-webkit-backdrop-filter:blur(14px) saturate(1.1);backdrop-filter:blur(14px) saturate(1.1)}
+.hx .hc-tile:hover{background-color:rgba(14,17,14,.8);border-color:var(--green-600)}
+.hx-mark{position:absolute;z-index:3;width:0;height:0}
+.hx-box{position:absolute;left:-22px;top:-22px;width:44px;height:44px;
+  background:linear-gradient(var(--phosphor),var(--phosphor)) 0 0/10px 2px,linear-gradient(var(--phosphor),var(--phosphor)) 0 0/2px 10px,
+  linear-gradient(var(--phosphor),var(--phosphor)) 100% 0/10px 2px,linear-gradient(var(--phosphor),var(--phosphor)) 100% 0/2px 10px,
+  linear-gradient(var(--phosphor),var(--phosphor)) 0 100%/10px 2px,linear-gradient(var(--phosphor),var(--phosphor)) 0 100%/2px 10px,
+  linear-gradient(var(--phosphor),var(--phosphor)) 100% 100%/10px 2px,linear-gradient(var(--phosphor),var(--phosphor)) 100% 100%/2px 10px;
+  background-repeat:no-repeat;animation:hx-lock 3.2s ease-in-out infinite}
+@keyframes hx-lock{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.25);opacity:.55}}
+.hx-tag{position:absolute;left:30px;top:-30px;white-space:nowrap;font:600 12px/1 var(--font-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--carbon-950);background:var(--phosphor);padding:5px 7px}
+.hx-tag::before{content:"";position:absolute;left:-10px;bottom:-9px;width:14px;height:1px;background:var(--phosphor);transform:rotate(-45deg);transform-origin:right}
+@media (prefers-reduced-motion:reduce){.hx .hc-bg .hx-media img,.hx-box{animation:none}}
+@media (max-width:900px){
+  .hx-media{width:auto;height:66vh;left:calc(50% - var(--fx,.72) * 132vh);right:auto}
+  .hx .hc-bg::after{background:linear-gradient(180deg,rgba(7,8,7,.7) 0,rgba(7,8,7,0) 14vh,rgba(7,8,7,0) 34vh,rgba(7,8,7,.85) 52vh,var(--carbon-950) 64vh)}
+  .hx .wrap{padding-top:calc(var(--header-h,64px) + 30vh)!important}
+  .hx-tag{font-size:10px;left:auto;right:30px}.hx-tag::before{display:none}
+}
+
+.hx-moon{--fx:.8}
+.hx-moon .hc-bg{background:#05080b}
+.hx-drone{position:absolute;left:84%;top:33%;width:4.4%;aspect-ratio:1;z-index:2;transform:translate(-50%,-50%);animation:hx-hover 7s ease-in-out infinite}
+.hx .hc-bg .hx-media .hx-drone img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;animation:none;opacity:.95;
+  transform:perspective(420px) rotateX(64deg) rotateZ(-12deg);filter:brightness(0) drop-shadow(0 0 1.5px rgba(170,200,225,.45))}
+.hx-drone i{position:absolute;left:50%;top:46%;width:4px;height:4px;margin:-2px;border-radius:50%;background:#8CFF45;box-shadow:0 0 6px 2px rgba(140,255,69,.65);animation:hx-blink 1.8s steps(1) infinite}
+@keyframes hx-hover{0%,100%{transform:translate(-50%,-50%)}50%{transform:translate(calc(-50% - 4px),calc(-50% - 7px))}}
+@keyframes hx-blink{0%,72%{opacity:1}73%,100%{opacity:.2}}
+@media (prefers-reduced-motion:reduce){.hx-drone,.hx-drone i{animation:none}}
+@media (max-width:900px){.hx-drone{width:5.2%}}
+</style>
 </head>
 <body>
 
@@ -460,21 +539,19 @@ svg.lucide{width:18px;height:18px;stroke-width:1.5;flex:none}
 <main id="top">
 
   <!-- Attention -->
-  <section class="hero" aria-labelledby="hero-title">
-    <div class="hero-media"><img src="assets/img/hero.webp" alt="Ударний FPV «Жнець 10 Ascent» у студії" width="2400" height="1340" fetchpriority="high"></div>
+  <section class="hero hc hx hx-moon" aria-labelledby="hero-title">
+    <div class="hc-bg" aria-hidden="true"><div class="hx-media"><img src="assets/img/hero-moon.webp" srcset="assets/img/hero-moon-1200.webp 1200w, assets/img/hero-moon.webp 2048w" sizes="(max-width:900px) 130vh, 130vw" alt="" fetchpriority="high"><span class="hx-drone"><img src="assets/img/zh10.webp" alt=""><i></i></span></div></div>
     <div class="wrap">
-      <div class="hero-copy">
-        <h1 class="display" id="hero-title">
-          <span class="line"><span data-hero>Ефективність</span></span>
-          <span class="line"><span data-hero>у кожній</span></span>
-          <span class="line"><span data-hero>деталі</span></span>
-        </h1>
-        <p class="lead" data-hero>Технології для Сил оборони України. Ударні та розвідувальні дрони «Жнець» від 10″ до 21″ для задач на глибину до 75 км.</p>
-        <div class="hero-ctas" data-hero>
-          <a class="btn btn-primary" href="#contact">Залишити запит <i data-lucide="arrow-right"></i></a>
-          <a class="btn btn-ghost" href="#line">Лінійка «Жнець»</a>
+      <div class="hc-head">
+        <div>
+          <h1 class="display hc-title" id="hero-title"><span class="line"><span data-hero>Серія «Жнець»</span></span></h1>
+        </div>
+        <div class="hc-side">
+          <div data-hero><p class="lead">Дрони для виконання бойових задач на&nbsp;глибину до&nbsp;75&nbsp;км.</p><span class="label hc-note">Власне виробництво · підтримка 24/7</span></div>
+          <div class="hero-ctas" data-hero><a class="btn btn-primary" href="#contact">Залишити запит <i data-lucide="arrow-right"></i></a></div>
         </div>
       </div>
+      <div class="hc-grid" data-hero><a class="hc-tile" href="zhnets-10.html"><span class="hc-n label">01</span><span class="hc-img"><img src="assets/img/zh10.webp" alt="Жнець 10 Ascent" fetchpriority="high"></span><span class="hc-kind label">Ударний FPV · 10″</span><b>Жнець 10</b><span class="hc-spec">50 км · 40 хв</span><span class="hc-go"><i data-lucide="arrow-right"></i></span></a><a class="hc-tile" href="zhnets-15.html"><span class="hc-n label">02</span><span class="hc-img"><img src="assets/img/zh15.webp" alt="Жнець 15 Ascent" fetchpriority="high"></span><span class="hc-kind label">Ударний FPV · 15″</span><b>Жнець 15</b><span class="hc-spec">5 кг · 30 км</span><span class="hc-go"><i data-lucide="arrow-right"></i></span></a><a class="hc-tile" href="zhnets-21-sk.html"><span class="hc-n label">03</span><span class="hc-img"><img src="assets/img/zh21sk.webp" alt="Жнець 21 SK" loading="lazy"></span><span class="hc-kind label">Ударна платформа · 21″</span><b>Жнець 21 SK</b><span class="hc-spec">75 км · Starlink</span><span class="hc-go"><i data-lucide="arrow-right"></i></span></a><a class="hc-tile" href="zhnets-recon.html"><span class="hc-n label">04</span><span class="hc-img"><img src="assets/img/zhrecon.webp" alt="Розвідувальний «Жнець»" loading="lazy"></span><span class="hc-kind label">Розвідка · 21″</span><b>Розвідник</b><span class="hc-spec">75 км · 90 км/год</span><span class="hc-go"><i data-lucide="arrow-right"></i></span></a><a class="hc-tile" href="zhnets-21-relay.html"><span class="hc-n label">05</span><span class="hc-img"><img src="assets/img/wireframe.webp" alt="Ретранслятор «Жнець 21»" loading="lazy" class="wire"></span><span class="hc-kind label">Ретранслятор · 21″</span><b>Ретранслятор</b><span class="hc-spec">39 Ah · HORN 300R</span><span class="hc-go"><i data-lucide="arrow-right"></i></span></a></div>
     </div>
   </section>
 
