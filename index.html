@@ -394,24 +394,6 @@ svg.lucide{width:18px;height:18px;stroke-width:1.5;flex:none}
 }
 
 /* Proof — combat footage */
-.proof-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:16px}
-.proof-card{margin:0;display:flex;flex-direction:column;gap:12px}
-.proof-card.a{grid-column:span 8;grid-row:span 2}
-.proof-card.b,.proof-card.c{grid-column:span 4}
-.proof-card.d,.proof-card.e{grid-column:span 6}
-.proof-media{position:relative;aspect-ratio:16/9;overflow:hidden;border:1px solid var(--border-subtle);background:var(--surface-1)}
-.proof-card.a .proof-media{aspect-ratio:auto;flex:1;min-height:0}
-.proof-media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .4s}
-.proof-card.ready video{opacity:1}
-.proof-ph{position:absolute;inset:0;display:grid;place-items:center;align-content:center;gap:10px;text-align:center;font:500 12px/1.4 var(--font-mono);color:var(--text-muted)}
-.proof-ph b{font-weight:500;color:var(--phosphor)}
-.proof-card.ready .proof-ph{display:none}
-.proof-media::before,.proof-media::after{content:"";position:absolute;width:18px;height:18px;z-index:2;pointer-events:none;border:1px solid var(--phosphor);opacity:.7}
-.proof-media::before{left:12px;top:12px;border-right:0;border-bottom:0}
-.proof-media::after{right:12px;bottom:12px;border-left:0;border-top:0}
-.proof-card figcaption{display:flex;justify-content:space-between;gap:16px;align-items:baseline}
-.proof-card figcaption .t{font:500 15px/1.35 var(--font-body);color:var(--text-primary)}
-@media (max-width:860px){.proof-card.a,.proof-card.b,.proof-card.c,.proof-card.d,.proof-card.e{grid-column:1/-1;grid-row:auto}.proof-card.a .proof-media{aspect-ratio:16/9;flex:none}}
 </style>
 <style>
 .support-sec .stages{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--border-strong)}
@@ -572,6 +554,45 @@ svg.lucide{width:18px;height:18px;stroke-width:1.5;flex:none}
 .soc svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linejoin:round}
 .soc svg path{fill:currentColor;stroke:none}
 </style>
+<style id="pv-css">
+.pv{position:relative}
+.pv-track{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;padding-bottom:4px}
+.pv-track::-webkit-scrollbar{display:none}
+.pv-card{margin:0;scroll-snap-align:start;display:flex;flex-direction:column;gap:12px;flex:0 0 calc((100% - 48px)/4)}
+.pv-media{position:relative;aspect-ratio:9/16;overflow:hidden;border:1px solid var(--border-subtle);background:var(--surface-1)}
+.pv-media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .4s}
+.pv-card.ready video{opacity:1}
+.pv-ph{position:absolute;inset:0;display:grid;place-items:center;align-content:center;gap:10px;text-align:center;
+  font:500 12px/1.4 var(--font-mono);color:var(--text-muted);padding:0 16px 58px;align-content:end}
+.pv-ph b{font-weight:500;color:var(--phosphor)}
+.pv-card.ready .pv-ph{display:none}
+.pv-play{position:absolute;z-index:2;display:grid;place-items:center;border:1px solid rgba(230,234,229,.2);
+  background:rgba(7,8,7,.6);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);color:var(--text-primary);cursor:pointer;
+  transition:background-color var(--dur-fast) var(--ease),color var(--dur-fast) var(--ease),border-color var(--dur-fast) var(--ease)}
+.pv-play{left:50%;top:50%;transform:translate(-50%,-50%);width:52px;height:52px}
+.pv-play:hover{background:var(--green-500);border-color:var(--green-500);color:var(--carbon-950)}
+.pv-play svg{width:20px;height:20px}
+.pv-card.playing .pv-play{opacity:0;pointer-events:none}
+.pv-media:hover .pv-play,.pv-card.playing .pv-media:hover .pv-play{opacity:1;pointer-events:auto}
+.pv-tag{position:absolute;left:12px;bottom:12px;z-index:2;max-width:calc(100% - 24px);padding:7px 11px;
+  background:rgba(7,8,7,.72);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border:1px solid rgba(230,234,229,.14);
+  font:500 11px/1.25 var(--font-mono);letter-spacing:.04em;text-transform:uppercase;color:var(--text-primary)}
+.pv-card figcaption{color:var(--text-muted)}
+.pv-bar{margin-top:28px;height:1px;background:var(--border-subtle);position:relative}
+.pv-progress{position:absolute;left:0;top:-1px;height:3px;background:var(--green-500);width:25%;
+  transition:width .2s var(--ease),left .2s var(--ease)}
+.pv-nav{position:absolute;right:0;bottom:-18px;display:flex;gap:8px}
+.pv-arrow{display:grid;place-items:center;width:40px;height:40px;border:1px solid var(--border-subtle);
+  background:var(--surface-1);color:var(--text-secondary);cursor:pointer;
+  transition:background-color var(--dur-fast) var(--ease),color var(--dur-fast) var(--ease),border-color var(--dur-fast) var(--ease)}
+.pv-arrow:hover:not(:disabled){background:var(--green-500);border-color:var(--green-500);color:var(--carbon-950)}
+.pv-arrow:disabled{opacity:.35;cursor:default}
+.pv-arrow svg{width:17px;height:17px}
+@media (max-width:1100px){.pv-card{flex-basis:calc((100% - 32px)/3)}}
+@media (max-width:860px){.pv-card{flex-basis:calc((100% - 16px)/2)}.pv-nav{display:none}}
+@media (max-width:560px){.pv-card{flex-basis:78%}}
+@media (prefers-reduced-motion:reduce){.pv-track{scroll-behavior:auto}}
+</style>
 </head>
 <body>
 
@@ -652,52 +673,80 @@ svg.lucide{width:18px;height:18px;stroke-width:1.5;flex:none}
         <h2 class="display" id="proof-title">Ефективність, доведена в бою</h2>
         <p class="lead">Кадри з бойових вильотів підрозділів, які працюють «Жнецями».</p>
       </div>
-      <div class="proof-grid" data-reveal>
-        <figure class="proof-card a">
-          <div class="proof-media">
-            <video muted loop playsinline preload="none" loading="lazy" width="1280" height="720" aria-label="Бойове застосування: Жнець 10 Ascent">
-              <source src="assets/video/proof-01.mp4" type="video/mp4">
+            <div class="pv" data-reveal>
+        <div class="pv-track" role="list">
+        <figure class="pv-card">
+          <div class="pv-media">
+            <video muted loop playsinline preload="none" width="720" height="1280" aria-label="Бойове застосування: Жнець 10 Ascent">
+              <source data-src="assets/video/proof-01.mp4" type="video/mp4">
             </video>
-            <div class="proof-ph"><b>Відео 01</b><span>assets/video/proof-01.mp4 · 16:9</span></div>
+            <div class="pv-ph"><b>Відео 01</b><span>assets/video/proof-01.mp4 · 9:16</span></div>
+            <button class="pv-play" type="button" aria-label="Відтворити"><i data-lucide="play"></i></button>
+            <span class="pv-tag">Особовий склад</span>
           </div>
-          <figcaption><span class="t">Підпис до відео 01</span><span class="label">Жнець 10 Ascent</span></figcaption>
+          <figcaption class="label">Жнець 10 Ascent</figcaption>
         </figure>
-        <figure class="proof-card b">
-          <div class="proof-media">
-            <video muted loop playsinline preload="none" loading="lazy" width="1280" height="720" aria-label="Бойове застосування: Жнець 15 Ascent">
-              <source src="assets/video/proof-02.mp4" type="video/mp4">
+        <figure class="pv-card">
+          <div class="pv-media">
+            <video muted loop playsinline preload="none" width="720" height="1280" aria-label="Бойове застосування: Жнець 15 Ascent">
+              <source data-src="assets/video/proof-02.mp4" type="video/mp4">
             </video>
-            <div class="proof-ph"><b>Відео 02</b><span>assets/video/proof-02.mp4 · 16:9</span></div>
+            <div class="pv-ph"><b>Відео 02</b><span>assets/video/proof-02.mp4 · 9:16</span></div>
+            <button class="pv-play" type="button" aria-label="Відтворити"><i data-lucide="play"></i></button>
+            <span class="pv-tag">Техніка</span>
           </div>
-          <figcaption><span class="t">Підпис до відео 02</span><span class="label">Жнець 15 Ascent</span></figcaption>
+          <figcaption class="label">Жнець 15 Ascent</figcaption>
         </figure>
-        <figure class="proof-card c">
-          <div class="proof-media">
-            <video muted loop playsinline preload="none" loading="lazy" width="1280" height="720" aria-label="Бойове застосування: Жнець 21 SK">
-              <source src="assets/video/proof-03.mp4" type="video/mp4">
+        <figure class="pv-card">
+          <div class="pv-media">
+            <video muted loop playsinline preload="none" width="720" height="1280" aria-label="Бойове застосування: Жнець 21 SK">
+              <source data-src="assets/video/proof-03.mp4" type="video/mp4">
             </video>
-            <div class="proof-ph"><b>Відео 03</b><span>assets/video/proof-03.mp4 · 16:9</span></div>
+            <div class="pv-ph"><b>Відео 03</b><span>assets/video/proof-03.mp4 · 9:16</span></div>
+            <button class="pv-play" type="button" aria-label="Відтворити"><i data-lucide="play"></i></button>
+            <span class="pv-tag">Техніка</span>
           </div>
-          <figcaption><span class="t">Підпис до відео 03</span><span class="label">Жнець 21 SK</span></figcaption>
+          <figcaption class="label">Жнець 21 SK</figcaption>
         </figure>
-        <figure class="proof-card d">
-          <div class="proof-media">
-            <video muted loop playsinline preload="none" loading="lazy" width="1280" height="720" aria-label="Бойове застосування: Розвідувальний «Жнець»">
-              <source src="assets/video/proof-04.mp4" type="video/mp4">
+        <figure class="pv-card">
+          <div class="pv-media">
+            <video muted loop playsinline preload="none" width="720" height="1280" aria-label="Бойове застосування: Розвідувальний «Жнець»">
+              <source data-src="assets/video/proof-04.mp4" type="video/mp4">
             </video>
-            <div class="proof-ph"><b>Відео 04</b><span>assets/video/proof-04.mp4 · 16:9</span></div>
+            <div class="pv-ph"><b>Відео 04</b><span>assets/video/proof-04.mp4 · 9:16</span></div>
+            <button class="pv-play" type="button" aria-label="Відтворити"><i data-lucide="play"></i></button>
+            <span class="pv-tag">Особовий склад</span>
           </div>
-          <figcaption><span class="t">Підпис до відео 04</span><span class="label">Розвідувальний «Жнець»</span></figcaption>
+          <figcaption class="label">Розвідувальний «Жнець»</figcaption>
         </figure>
-        <figure class="proof-card e">
-          <div class="proof-media">
-            <video muted loop playsinline preload="none" loading="lazy" width="1280" height="720" aria-label="Бойове застосування: Жнець 10 Ascent">
-              <source src="assets/video/proof-05.mp4" type="video/mp4">
+        <figure class="pv-card">
+          <div class="pv-media">
+            <video muted loop playsinline preload="none" width="720" height="1280" aria-label="Бойове застосування: Жнець 10 Ascent">
+              <source data-src="assets/video/proof-05.mp4" type="video/mp4">
             </video>
-            <div class="proof-ph"><b>Відео 05</b><span>assets/video/proof-05.mp4 · 16:9</span></div>
+            <div class="pv-ph"><b>Відео 05</b><span>assets/video/proof-05.mp4 · 9:16</span></div>
+            <button class="pv-play" type="button" aria-label="Відтворити"><i data-lucide="play"></i></button>
+            <span class="pv-tag">Техніка</span>
           </div>
-          <figcaption><span class="t">Підпис до відео 05</span><span class="label">Жнець 10 Ascent</span></figcaption>
+          <figcaption class="label">Жнець 10 Ascent</figcaption>
         </figure>
+        <figure class="pv-card">
+          <div class="pv-media">
+            <video muted loop playsinline preload="none" width="720" height="1280" aria-label="Бойове застосування: Жнець 15 Ascent">
+              <source data-src="assets/video/proof-06.mp4" type="video/mp4">
+            </video>
+            <div class="pv-ph"><b>Відео 06</b><span>assets/video/proof-06.mp4 · 9:16</span></div>
+            <button class="pv-play" type="button" aria-label="Відтворити"><i data-lucide="play"></i></button>
+            <span class="pv-tag">Особовий склад</span>
+          </div>
+          <figcaption class="label">Жнець 15 Ascent</figcaption>
+        </figure>
+        </div>
+        <div class="pv-bar"><span class="pv-progress"></span></div>
+        <div class="pv-nav">
+          <button class="pv-arrow" type="button" data-dir="-1" aria-label="Попередні відео"><i data-lucide="chevron-left"></i></button>
+          <button class="pv-arrow" type="button" data-dir="1" aria-label="Наступні відео"><i data-lucide="chevron-right"></i></button>
+        </div>
       </div>
     </div>
   </section>
@@ -901,16 +950,6 @@ svg.lucide{width:18px;height:18px;stroke-width:1.5;flex:none}
     el.addEventListener('focus',function(){openItem(el)});
   });
 
-  /* Proof videos: play only while on screen; placeholder until a file loads */
-  [].slice.call(document.querySelectorAll('.proof-card video')).forEach(function(v){
-    var card=v.closest('.proof-card');
-    v.addEventListener('loadeddata',function(){card.classList.add('ready')});
-    if(matchMedia('(prefers-reduced-motion: reduce)').matches){v.controls=true;v.preload='metadata';return}
-    if(!('IntersectionObserver' in window)){v.preload='auto';v.play().catch(function(){});return}
-    new IntersectionObserver(function(es){es.forEach(function(e){
-      if(e.isIntersecting){if(v.preload==='none'){v.preload='auto';v.load()}v.play().catch(function(){})}else v.pause();
-    })},{threshold:.35}).observe(v);
-  });
 
   /* Lead form — prototype only, nothing is sent */
   var lf=document.getElementById('lead-form');
@@ -945,6 +984,43 @@ svg.lucide{width:18px;height:18px;stroke-width:1.5;flex:none}
     gsap.fromTo(el,{opacity:1},{opacity:.2,ease:'none',immediateRender:false,scrollTrigger:{trigger:el,start:'center 30%',end:'bottom top',scrub:true}});
   });
 
+})();
+</script>
+<script id="pv-js">
+(function(){
+  var pv=document.querySelector('.pv'); if(!pv) return;
+  var track=pv.querySelector('.pv-track'), prog=pv.querySelector('.pv-progress'),
+      arrows=pv.querySelectorAll('.pv-arrow'), cards=[].slice.call(pv.querySelectorAll('.pv-card'));
+
+  function step(){ var c=cards[0]; return c?c.getBoundingClientRect().width+16:300; }
+  function sync(){
+    var max=track.scrollWidth-track.clientWidth;
+    var vis=Math.min(1,track.clientWidth/track.scrollWidth);
+    var p=max>1?track.scrollLeft/max:0;
+    prog.style.width=(vis*100)+'%';
+    prog.style.left=(p*(100-vis*100))+'%';
+    arrows[0].disabled=track.scrollLeft<4;
+    arrows[1].disabled=track.scrollLeft>max-4;
+  }
+  track.addEventListener('scroll',sync,{passive:true});
+  addEventListener('resize',sync); sync();
+  arrows.forEach(function(b){ b.addEventListener('click',function(){
+    track.scrollBy({left:+b.dataset.dir*step()*2,behavior:'smooth'});
+  });});
+
+  cards.forEach(function(card){
+    var v=card.querySelector('video'), play=card.querySelector('.pv-play');
+    function load(){ if(v.dataset.on) return; v.dataset.on='1';
+      [].slice.call(v.querySelectorAll('source')).forEach(function(s){ if(s.dataset.src){ s.src=s.dataset.src; } });
+      v.load(); v.addEventListener('loadeddata',function(){ card.classList.add('ready'); },{once:true}); }
+    play.addEventListener('click',function(){
+      load();
+      if(v.paused){ cards.forEach(function(o){ if(o!==card){ var ov=o.querySelector('video'); ov.pause(); o.classList.remove('playing'); } });
+        v.play().then(function(){ card.classList.add('playing'); }).catch(function(){});
+        play.setAttribute('aria-label','Пауза');
+      } else { v.pause(); card.classList.remove('playing'); play.setAttribute('aria-label','Відтворити'); }
+    });
+  });
 })();
 </script>
 </body>
