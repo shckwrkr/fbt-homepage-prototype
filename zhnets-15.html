@@ -553,6 +553,15 @@ svg.lucide{width:18px;height:18px;stroke-width:1.5;flex:none}
 .ua-flag{width:16px;height:11px;flex:none;border-radius:1px;background:linear-gradient(180deg,#0057B7 0 50%,#FFD700 50% 100%);box-shadow:0 0 0 1px rgba(230,234,229,.14)}
 @media (max-width:900px){:root{--header-h:100px}.topbar{height:32px}.site-header{top:32px}.tb-right a[href^="mailto"]{display:none}.tb-right{gap:0}}
 </style>
+<style id="soc-css">
+.foot-grid .soc{list-style:none;margin:24px 0 0;padding:0;display:flex;flex-direction:row;gap:10px}
+.soc a{display:grid;place-items:center;width:40px;height:40px;border:1px solid var(--border-subtle);
+  background:var(--surface-1);color:var(--text-secondary);
+  transition:color var(--dur-fast) var(--ease),border-color var(--dur-fast) var(--ease),background-color var(--dur-fast) var(--ease)}
+.soc a:hover{color:var(--carbon-950);background:var(--green-500);border-color:var(--green-500)}
+.soc svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linejoin:round}
+.soc svg path{fill:currentColor;stroke:none}
+</style>
 </head>
 <body>
 
@@ -818,6 +827,10 @@ svg.lucide{width:18px;height:18px;stroke-width:1.5;flex:none}
       <div>
         <a class="brand" href="index.html" aria-label="Flying Birds Tech"><img class="brand-full brand-b" src="assets/img/fbt-logo-b-on-dark.svg" alt="" width="100" height="40"><img class="brand-mark" src="assets/img/logo-mark.png" alt="" width="32" height="33"></a>
         <p class="label" style="margin:16px 0 0">Ефективні технологічні рішення для Сил оборони України</p>
+        <ul class="soc" aria-label="Соцмережі">
+          <li><a href="https://www.instagram.com/flyingbirds.tech/" target="_blank" rel="noopener" aria-label="Instagram Flying Birds Tech"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r="1.15" fill="currentColor" stroke="none"/></svg></a></li>
+          <li><a href="https://www.tiktok.com/@flyingbirds.tech" target="_blank" rel="noopener" aria-label="TikTok Flying Birds Tech"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M13.6 3h2.6a5.2 5.2 0 0 0 4.6 4.5v2.7a7.8 7.8 0 0 1-4.6-1.6v6.2a5.9 5.9 0 1 1-5.9-5.9c.3 0 .6 0 .9.1v2.8a3.1 3.1 0 1 0 2.4 3V3Z"/></svg></a></li>
+        </ul>
       </div>
       <div>
         <h4>Лінійка</h4>
