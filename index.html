@@ -403,6 +403,11 @@ svg.lucide{width:18px;height:18px;stroke-width:1.5;flex:none}
 }
 
 /* Proof — combat footage */
+
+@media (max-width:900px){
+  .section-head{gap:20px;margin-bottom:40px}
+  .section-head .lead{justify-self:start}
+}
 </style>
 <style>
 .support-sec{padding:clamp(64px,8vw,112px) 0}
@@ -509,6 +514,11 @@ svg.lucide{width:18px;height:18px;stroke-width:1.5;flex:none}
 
 .hx-moon .hc-tile{background-color:#F4F6F3;-webkit-backdrop-filter:none;backdrop-filter:none}
 .hx-moon .hc-tile:hover{background-color:#fff}
+
+.hc-brand{display:none}
+@media (max-width:900px){
+  .hc-brand{display:block;margin:0 0 12px;letter-spacing:.16em;color:var(--phosphor);text-transform:uppercase;font-size:11px}
+}
 </style>
 <style id="cmp-css">
 .cmp{border:1px solid var(--border-subtle);background:var(--surface-1);overflow-x:auto;-webkit-overflow-scrolling:touch}
@@ -666,6 +676,7 @@ html.hdr-sc .topbar{border-bottom-width:0;visibility:hidden;pointer-events:none}
     <div class="wrap">
       <div class="hc-head">
         <div>
+          <span class="label hc-brand" data-hero>Flying Birds Tech</span>
           <h1 class="display hc-title" id="hero-title"><span class="line"><span data-hero>Серія «Жнець»</span></span></h1>
         </div>
         <div class="hc-side">
