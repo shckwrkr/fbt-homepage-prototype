@@ -5,7 +5,7 @@
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Про нас — Flying Birds Tech</title>
-<meta name="description" content="Ударні та розвідувальні БпЛА «Жнець» від 10″ до 21″ для військових частин, волонтерів і фондів. Одеса.">
+<meta name="description" content="Ударні та розвідувальні БпЛА «Жнець» від 10″ до 21″ для військових частин, волонтерів і фондів.">
 <link rel="icon" href="assets/img/logo-mark.png">
 <style>
 /* Fonts: Tektur (Adam Jagosz, OFL), Geist / Geist Mono (Vercel x Basement Studio, OFL) */
@@ -434,17 +434,22 @@ svg.lucide{width:18px;height:18px;stroke-width:1.5;flex:none}
 @media (max-width:560px){.a-stats{grid-template-columns:minmax(0,1fr)}.a-stats div{padding-left:0!important;border-left:0!important;padding-bottom:20px;border-bottom:1px solid var(--border-subtle)}}
 </style>
 <style id="topbar-css">
-:root{--header-h:104px}
-.topbar{height:36px;display:flex;align-items:center;background:var(--carbon-900);border-bottom:1px solid var(--border-subtle)}
+:root{--header-h:104px;--tb-h:36px}
+.site-top{position:fixed;inset:0 0 auto 0;z-index:50}
+.topbar{height:var(--tb-h);display:flex;align-items:center;overflow:hidden;background:var(--carbon-900);
+  border-bottom:1px solid var(--border-subtle);transition:height .28s var(--ease),border-color .28s var(--ease)}
 .topbar .wrap{display:flex;align-items:center;gap:16px;width:100%}
 .tb-ua{display:inline-flex;align-items:center;gap:8px}
 .tb-ua b{font:500 11px/1 var(--font-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--text-primary)}
 .tb-right{margin-left:auto;display:flex;gap:24px}
 .tb-right a{font:400 12px/1 var(--font-mono);color:var(--text-muted);transition:color var(--dur-fast) var(--ease)}
 .tb-right a:hover{color:var(--phosphor)}
-.site-header{top:36px;height:68px}
+.site-header{position:static;height:68px}
 .ua-flag{width:16px;height:11px;flex:none;border-radius:1px;background:linear-gradient(180deg,#0057B7 0 50%,#FFD700 50% 100%);box-shadow:0 0 0 1px rgba(230,234,229,.14)}
-@media (max-width:900px){:root{--header-h:100px}.topbar{height:32px}.site-header{top:32px}.tb-right a[href^="mailto"]{display:none}.tb-right{gap:0}}
+html.hdr-sc{--header-h:68px;--tb-h:0px}
+html.hdr-sc .topbar{border-bottom-width:0}
+@media (max-width:900px){:root{--header-h:100px;--tb-h:32px}.tb-right a[href^="mailto"]{display:none}.tb-right{gap:0}}
+@media (prefers-reduced-motion:reduce){.topbar{transition:none}}
 </style>
 <style id="soc-css">
 .foot-grid .soc{list-style:none;margin:24px 0 0;padding:0;display:flex;flex-direction:row;gap:10px}
@@ -474,6 +479,7 @@ svg.lucide{width:18px;height:18px;stroke-width:1.5;flex:none}
 </head>
 <body>
 
+<div class="site-top">
 <div class="topbar">
   <div class="wrap">
     <span class="tb-ua"><span class="ua-flag" aria-hidden="true"></span><b>Вироблено в Україні</b></span>
@@ -497,6 +503,7 @@ svg.lucide{width:18px;height:18px;stroke-width:1.5;flex:none}
     </div>
   </div>
 </header>
+</div>
 <nav class="mobile-nav" id="mobile-nav" aria-label="Мобільна навігація">
   <a href="index.html#line">Лінійка</a>
   <a href="about.html">Про нас</a>
@@ -510,7 +517,7 @@ svg.lucide{width:18px;height:18px;stroke-width:1.5;flex:none}
     <div class="wrap">
       <nav class="crumbs label" aria-label="Навігація"><a href="index.html">Головна</a><span>/</span><span aria-current="page">Про нас</span></nav>
       <h1 class="display" id="a-title">Від дронів для батька до власного виробництва</h1>
-      <p class="lead">Flying Birds Tech — виробник ударних і розвідувальних дронів «Жнець» в Одесі. Починали з волонтерства, тепер робимо серію для далекобійних задач.</p>
+      <p class="lead">Flying Birds Tech — виробник ударних і розвідувальних дронів «Жнець». Починали з волонтерства, тепер робимо серію для далекобійних задач.</p>
       <dl class="a-stats">
         <div><dt>дронів передано в&nbsp;Сили оборони України</dt><dd class="accent">60 000+</dd></div>
         <div><dt>дронів на місяць виробляємо зараз</dt><dd>3 000</dd></div>
@@ -541,7 +548,7 @@ svg.lucide{width:18px;height:18px;stroke-width:1.5;flex:none}
     <div class="wrap">
       <div class="section-head" data-reveal>
         <h2 class="display" id="t-title">Як ми росли</h2>
-        <p class="lead">Від збірки на донати до серійної лінії в Одесі.</p>
+        <p class="lead">Від збірки на донати до серійного виробництва.</p>
       </div>
       <ol class="t-cards" role="list">
         <li data-reveal>
@@ -552,9 +559,9 @@ svg.lucide{width:18px;height:18px;stroke-width:1.5;flex:none}
         </li>
         <li data-reveal>
           <div class="t-img"><img src="assets/img/story-odesa.webp" alt="" loading="lazy"></div>
-          <span class="t-year">2025 · Одеса</span>
+          <span class="t-year">2025</span>
           <h3>Власна розробка і виробництво</h3>
-          <p>Засновуємо Flying Birds Tech. R&amp;D і виробнича лінія в Одесі, у команді 30+ людей.</p>
+          <p>Засновуємо Flying Birds Tech. Власні R&amp;D і виробнича лінія, у команді 30+ людей.</p>
         </li>
         <li data-reveal>
           <div class="t-img t-img-product"><img src="assets/img/zh21sk.webp" alt="" loading="lazy"></div>
@@ -774,6 +781,21 @@ svg.lucide{width:18px;height:18px;stroke-width:1.5;flex:none}
     gsap.fromTo(el,{opacity:1},{opacity:.2,ease:'none',immediateRender:false,scrollTrigger:{trigger:el,start:'center 30%',end:'bottom top',scrub:true}});
   });
 
+})();
+</script>
+<script id="topbar-js">
+(function(){
+  var r=document.documentElement;
+  function set(s){ r.classList.toggle('hdr-sc',s); }
+  var sp=document.createElement('span');
+  sp.setAttribute('aria-hidden','true');
+  sp.style.cssText='position:absolute;top:24px;left:0;width:1px;height:1px;pointer-events:none';
+  document.body.insertBefore(sp,document.body.firstChild);
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(e){ set(!e[0].isIntersecting); }).observe(sp);
+  } else {
+    addEventListener('scroll',function(){ set(scrollY>24); },{passive:true});
+  }
 })();
 </script>
 </body>

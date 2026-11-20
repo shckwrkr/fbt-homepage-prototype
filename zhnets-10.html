@@ -5,7 +5,7 @@
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Жнець 10 Ascent — Flying Birds Tech</title>
-<meta name="description" content="Ударні та розвідувальні БпЛА «Жнець» від 10″ до 21″ для військових частин, волонтерів і фондів. Одеса.">
+<meta name="description" content="Ударні та розвідувальні БпЛА «Жнець» від 10″ до 21″ для військових частин, волонтерів і фондів.">
 <link rel="icon" href="assets/img/logo-mark.png">
 <style>
 /* Fonts: Tektur (Adam Jagosz, OFL), Geist / Geist Mono (Vercel x Basement Studio, OFL) */
@@ -590,17 +590,22 @@ svg.lucide{width:18px;height:18px;stroke-width:1.5;flex:none}
 .pc-z21sk .p-media img.pc-drone{filter:drop-shadow(0 0 1px rgba(200,215,240,.4)) drop-shadow(0 30px 40px rgba(0,0,0,.6)) brightness(1.12)}
 </style>
 <style id="topbar-css">
-:root{--header-h:104px}
-.topbar{height:36px;display:flex;align-items:center;background:var(--carbon-900);border-bottom:1px solid var(--border-subtle)}
+:root{--header-h:104px;--tb-h:36px}
+.site-top{position:fixed;inset:0 0 auto 0;z-index:50}
+.topbar{height:var(--tb-h);display:flex;align-items:center;overflow:hidden;background:var(--carbon-900);
+  border-bottom:1px solid var(--border-subtle);transition:height .28s var(--ease),border-color .28s var(--ease)}
 .topbar .wrap{display:flex;align-items:center;gap:16px;width:100%}
 .tb-ua{display:inline-flex;align-items:center;gap:8px}
 .tb-ua b{font:500 11px/1 var(--font-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--text-primary)}
 .tb-right{margin-left:auto;display:flex;gap:24px}
 .tb-right a{font:400 12px/1 var(--font-mono);color:var(--text-muted);transition:color var(--dur-fast) var(--ease)}
 .tb-right a:hover{color:var(--phosphor)}
-.site-header{top:36px;height:68px}
+.site-header{position:static;height:68px}
 .ua-flag{width:16px;height:11px;flex:none;border-radius:1px;background:linear-gradient(180deg,#0057B7 0 50%,#FFD700 50% 100%);box-shadow:0 0 0 1px rgba(230,234,229,.14)}
-@media (max-width:900px){:root{--header-h:100px}.topbar{height:32px}.site-header{top:32px}.tb-right a[href^="mailto"]{display:none}.tb-right{gap:0}}
+html.hdr-sc{--header-h:68px;--tb-h:0px}
+html.hdr-sc .topbar{border-bottom-width:0}
+@media (max-width:900px){:root{--header-h:100px;--tb-h:32px}.tb-right a[href^="mailto"]{display:none}.tb-right{gap:0}}
+@media (prefers-reduced-motion:reduce){.topbar{transition:none}}
 </style>
 <style id="soc-css">
 .foot-grid .soc{list-style:none;margin:24px 0 0;padding:0;display:flex;flex-direction:row;gap:10px}
@@ -614,6 +619,7 @@ svg.lucide{width:18px;height:18px;stroke-width:1.5;flex:none}
 </head>
 <body>
 
+<div class="site-top">
 <div class="topbar">
   <div class="wrap">
     <span class="tb-ua"><span class="ua-flag" aria-hidden="true"></span><b>Вироблено в Україні</b></span>
@@ -637,6 +643,7 @@ svg.lucide{width:18px;height:18px;stroke-width:1.5;flex:none}
     </div>
   </div>
 </header>
+</div>
 <nav class="mobile-nav" id="mobile-nav" aria-label="Мобільна навігація">
   <a href="index.html#line">Лінійка</a>
   <a href="about.html">Про нас</a>
@@ -1096,6 +1103,21 @@ svg.lucide{width:18px;height:18px;stroke-width:1.5;flex:none}
   addEventListener('scroll',onScroll,{passive:true});
   addEventListener('resize',function(){size();tick()});
   size(); tick();
+})();
+</script>
+<script id="topbar-js">
+(function(){
+  var r=document.documentElement;
+  function set(s){ r.classList.toggle('hdr-sc',s); }
+  var sp=document.createElement('span');
+  sp.setAttribute('aria-hidden','true');
+  sp.style.cssText='position:absolute;top:24px;left:0;width:1px;height:1px;pointer-events:none';
+  document.body.insertBefore(sp,document.body.firstChild);
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(e){ set(!e[0].isIntersecting); }).observe(sp);
+  } else {
+    addEventListener('scroll',function(){ set(scrollY>24); },{passive:true});
+  }
 })();
 </script>
 </body>
