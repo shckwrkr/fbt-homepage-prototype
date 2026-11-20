@@ -84,7 +84,10 @@ img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
 button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
 ::selection{background:var(--green-500);color:var(--carbon-950)}
-:focus-visible{outline:1px solid var(--focus-ring);outline-offset:3px}
+:focus-visible{outline:2px solid var(--focus-ring);outline-offset:3px}
+main:focus{outline:none}
+.skip-link{position:absolute;top:-120px;left:16px;z-index:100;padding:12px 18px;background:var(--green-500);color:var(--carbon-950);font:600 13px/1 var(--font-mono);letter-spacing:.02em;text-transform:uppercase;box-shadow:0 4px 16px rgba(0,0,0,.5);transition:top var(--dur-fast) var(--ease)}
+.skip-link:focus{top:16px}
 main{overflow-x:clip;width:100%;max-width:100%}
 .wrap{max-width:var(--container);margin:0 auto;padding:0 var(--pad-x)}
 .chapter{background:var(--bg-page);color:var(--text-primary);padding:var(--section-y) 0}
@@ -114,11 +117,17 @@ svg.lucide{width:18px;height:18px;stroke-width:1.5;flex:none}
 .brand .brand-mark{display:none}
 .nav{display:flex;gap:32px}
 .nav a{font:500 14px/1 var(--font-body);color:var(--text-secondary);padding:8px 0;transition:color var(--dur-fast) var(--ease)}
-.nav a:hover,.nav a[aria-current="true"]{color:var(--text-primary)}
+.nav a:hover,.nav a[aria-current]{color:var(--text-primary)}
+.mobile-nav a[aria-current]{color:var(--phosphor)}
 .header-actions{justify-self:end;display:flex;align-items:center;gap:20px}
 .header-phone{font:500 13px/1 var(--font-mono);color:var(--text-secondary);transition:color var(--dur-fast) var(--ease)}
 .header-phone:hover{color:var(--phosphor)}
-.menu-btn{display:none;width:44px;height:44px;align-items:center;justify-content:center;border:1px solid var(--border-strong)}
+.menu-btn{display:none;width:44px;height:44px;align-items:center;justify-content:center;border:1px solid var(--border-strong);color:var(--text-primary);cursor:pointer;transition:border-color var(--dur-fast) var(--ease),color var(--dur-fast) var(--ease),background-color var(--dur-fast) var(--ease)}
+.menu-btn:hover{border-color:var(--accent-line);color:var(--phosphor)}
+.menu-btn .menu-ic-close{display:none}
+.menu-btn[aria-expanded="true"] .menu-ic-open{display:none}
+.menu-btn[aria-expanded="true"] .menu-ic-close{display:block}
+.menu-btn[aria-expanded="true"]{background:var(--surface-2);border-color:var(--accent-line);color:var(--phosphor)}
 .mobile-nav{display:none}
 
 /* Hero — editorial split on one scene */
@@ -450,6 +459,7 @@ svg.lucide{width:18px;height:18px;stroke-width:1.5;flex:none}
 .drawing{overflow:clip;max-width:min(520px,calc(100vh - 360px));min-width:280px}
 .drawing-zoom{position:absolute;inset:0;transition:transform .7s var(--ease);transform-origin:50% 50%}
 .callout{width:36px;height:36px;border:1px solid var(--carbon-950);background:var(--carbon-950);color:var(--carbon-50);font:500 12px/1 var(--font-mono);cursor:pointer;padding:0;opacity:1;
+.callout::before{content:"";position:absolute;inset:-6px;border-radius:50%}
   transition:background-color var(--dur-base) var(--ease),color var(--dur-base) var(--ease),opacity var(--dur-base) var(--ease),transform var(--dur-base) var(--ease)}
 .callout::after{content:"";position:absolute;inset:-7px;border:1px solid var(--green-500);opacity:0;pointer-events:none}
 .callout:hover{background:var(--green-600);border-color:var(--green-600)}
@@ -544,7 +554,7 @@ svg.lucide{width:18px;height:18px;stroke-width:1.5;flex:none}
 :root{--header-h:104px;--tb-h:36px}
 .site-top{position:fixed;inset:0 0 auto 0;z-index:50}
 .topbar{height:var(--tb-h);display:flex;align-items:center;overflow:hidden;background:var(--carbon-900);
-  border-bottom:1px solid var(--border-subtle);transition:height .28s var(--ease),border-color .28s var(--ease)}
+  border-bottom:1px solid var(--border-subtle);transition:height .28s var(--ease),border-color .28s var(--ease),visibility .28s var(--ease)}
 .topbar .wrap{display:flex;align-items:center;gap:16px;width:100%}
 .tb-ua{display:inline-flex;align-items:center;gap:8px}
 .tb-ua b{font:500 11px/1 var(--font-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--text-primary)}
@@ -554,7 +564,7 @@ svg.lucide{width:18px;height:18px;stroke-width:1.5;flex:none}
 .site-header{position:static;height:68px}
 .ua-flag{width:16px;height:11px;flex:none;border-radius:1px;background:linear-gradient(180deg,#0057B7 0 50%,#FFD700 50% 100%);box-shadow:0 0 0 1px rgba(230,234,229,.14)}
 html.hdr-sc{--header-h:68px;--tb-h:0px}
-html.hdr-sc .topbar{border-bottom-width:0}
+html.hdr-sc .topbar{border-bottom-width:0;visibility:hidden;pointer-events:none}
 @media (max-width:900px){:root{--header-h:100px;--tb-h:32px}.tb-right a[href^="mailto"]{display:none}.tb-right{gap:0}}
 @media (prefers-reduced-motion:reduce){.topbar{transition:none}}
 </style>
@@ -580,6 +590,7 @@ html.hdr-sc .topbar{border-bottom-width:0}
 </style>
 </head>
 <body>
+<a href="#top" class="skip-link">Перейти до основного вмісту</a>
 
 <div class="site-top">
 <div class="topbar">
@@ -601,7 +612,7 @@ html.hdr-sc .topbar{border-bottom-width:0}
     </nav>
     <div class="header-actions">
       <a class="btn btn-primary btn-s" href="#contact">Залиште запит</a>
-      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Меню"><i data-lucide="menu"></i></button>
+      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Меню"><svg class="menu-ic-open" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg><svg class="menu-ic-close" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
     </div>
   </div>
 </header>
@@ -614,7 +625,7 @@ html.hdr-sc .topbar{border-bottom-width:0}
   <a class="btn btn-primary" href="#contact">Залиште запит</a>
 </nav>
 
-<main id="top">
+<main id="top" tabindex="-1">
   <section class="p-hero pc pc-z15" style="--pos:50% 50%;--pos-m:60% 50%" aria-labelledby="p-title">
     <div class="pc-bg" aria-hidden="true"><img src="assets/img/cover-z15.webp" srcset="assets/img/cover-z15-1200.webp 1200w, assets/img/cover-z15.webp 2048w" sizes="100vw" alt="" fetchpriority="high"></div>
     <div class="wrap">
@@ -814,7 +825,7 @@ html.hdr-sc .topbar{border-bottom-width:0}
         </div>
 
         <form class="lead-form" id="lead-form" novalidate data-reveal>
-          <div class="lf-head"><h3>Залишити запит</h3><span class="label">Передзвонимо і підготуємо пропозицію</span></div>
+          <div class="lf-head"><h3>Залиште запит</h3><span class="label">Передзвонимо і підготуємо пропозицію</span></div>
           <input type="hidden" name="model" value="Жнець 15 Ascent">
           <div class="lf-grid">
             <label class="field"><span>Ім'я</span><input name="name" type="text" autocomplete="name" placeholder="Як до вас звертатися" required></label>
@@ -942,8 +953,20 @@ html.hdr-sc .topbar{border-bottom-width:0}
 
   /* Mobile menu */
   var menuBtn=document.querySelector('.menu-btn'), mnav=document.getElementById('mobile-nav');
-  menuBtn.addEventListener('click',function(){var o=mnav.classList.toggle('open');menuBtn.setAttribute('aria-expanded',o)});
-  mnav.addEventListener('click',function(e){if(e.target.closest('a')){mnav.classList.remove('open');menuBtn.setAttribute('aria-expanded','false')}});
+  function toggleMenu(open){
+    if(!mnav||!menuBtn)return;
+    var o=typeof open==='boolean'?open:!mnav.classList.contains('open');
+    mnav.classList.toggle('open',o);
+    menuBtn.setAttribute('aria-expanded',o?'true':'false');
+    menuBtn.setAttribute('aria-label',o?'Закрити меню':'Меню');
+    document.body.style.overflow=o?'hidden':'';
+  }
+  if(menuBtn&&mnav){
+    menuBtn.addEventListener('click',function(e){e.stopPropagation();toggleMenu();});
+    mnav.addEventListener('click',function(e){if(e.target.closest('a'))toggleMenu(false);});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape'&&mnav.classList.contains('open'))toggleMenu(false);});
+    document.addEventListener('click',function(e){if(mnav.classList.contains('open')&&!mnav.contains(e.target)&&!menuBtn.contains(e.target))toggleMenu(false);});
+  }
 
   /* Accordion — the line */
   var items=[].slice.call(document.querySelectorAll('.acc-item'));
@@ -956,18 +979,29 @@ html.hdr-sc .topbar{border-bottom-width:0}
 
   /* Lead form — prototype only, nothing is sent */
   var lf=document.getElementById('lead-form');
-  lf.addEventListener('submit',function(e){
-    e.preventDefault();
-    var ok=true,err=document.getElementById('lf-error');
-    ['name','phone'].forEach(function(n){var f=lf.elements[n];var bad=!f.value.trim();f.setAttribute('aria-invalid',bad);if(bad)ok=false});
-    err.textContent=ok?'':'Вкажіть ім\'я та телефон.';
-    if(ok&&lf.querySelector('.cf-turnstile')){
-      var t=lf.elements['cf-turnstile-response'];
-      if(!t||!t.value){ ok=false; err.textContent='Пройдіть перевірку захисту форми.'; }
-    }
-    err.hidden=ok;
-    if(ok)document.getElementById('lf-done').hidden=false;
-  });
+  if(lf){
+    lf.addEventListener('submit',function(e){
+      e.preventDefault();
+      var ok=true,err=document.getElementById('lf-error'),firstBad=null;
+      ['name','phone'].forEach(function(n){
+        var f=lf.elements[n];var bad=!f.value.trim();
+        f.setAttribute('aria-invalid',bad);
+        if(bad){ok=false;if(!firstBad)firstBad=f;}
+      });
+      err.textContent=ok?'':"Вкажіть ім'я та телефон.";
+      if(ok&&lf.querySelector('.cf-turnstile')){
+        var t=lf.elements['cf-turnstile-response'];
+        if(!t||!t.value){ok=false;err.textContent='Пройдіть перевірку захисту форми.';if(!firstBad)firstBad=lf.querySelector('.cf-turnstile');}
+      }
+      err.hidden=ok;
+      if(!ok){
+        if(firstBad&&firstBad.focus)firstBad.focus();
+      }else{
+        var done=document.getElementById('lf-done');
+        if(done){done.hidden=false;done.setAttribute('tabindex','-1');done.focus();}
+      }
+    });
+  }
 
   var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 
