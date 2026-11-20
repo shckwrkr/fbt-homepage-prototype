@@ -521,6 +521,35 @@ svg.lucide{width:18px;height:18px;stroke-width:1.5;flex:none}
 .hx-moon .hc-tile{background-color:#F4F6F3;-webkit-backdrop-filter:none;backdrop-filter:none}
 .hx-moon .hc-tile:hover{background-color:#fff}
 </style>
+<style id="cmp-css">
+.cmp{border:1px solid var(--border-subtle);background:var(--surface-1);overflow-x:auto;-webkit-overflow-scrolling:touch}
+.cmp-t{width:100%;min-width:980px;border-collapse:collapse;font:400 15px/1.35 var(--font-body);color:var(--text-primary)}
+.cmp-t thead th{font:500 12px/1.3 var(--font-mono);color:var(--text-muted);text-align:left;padding:16px 20px;border-bottom:1px solid var(--border-strong);white-space:nowrap;letter-spacing:.02em}
+.cmp-t td,.cmp-t tbody th{padding:14px 20px;border-top:1px solid var(--border-subtle);text-align:left;vertical-align:middle}
+.cmp-t tbody tr:first-child td,.cmp-t tbody tr:first-child th{border-top:0}
+.cmp-m{display:flex;align-items:center;gap:14px;color:inherit;text-decoration:none}
+.cmp-m img{width:64px;height:64px;object-fit:contain;flex:none;filter:drop-shadow(0 6px 6px rgba(7,8,7,.18))}
+.cmp-m img.wire{filter:brightness(.32) saturate(2.4) contrast(1.4)}
+.cmp-m span{font:600 16px/1.15 var(--font-display);text-transform:uppercase;letter-spacing:.03em}
+.cmp-num{font:500 15px/1.35 var(--font-mono);white-space:nowrap;font-variant-numeric:tabular-nums}
+.cmp-t tbody td:nth-child(3){color:var(--green-700)}
+.cmp-t tbody td:nth-child(2),.cmp-t tbody td:nth-child(7){white-space:nowrap}
+.cmp-go{width:56px}
+.cmp-go a{display:grid;place-items:center;width:36px;height:36px;border:1px solid var(--border-strong);color:var(--text-secondary);transition:all var(--dur-fast) var(--ease)}
+.cmp-go svg{width:16px;height:16px}
+.cmp-t tbody tr{transition:background-color var(--dur-fast) var(--ease)}
+.cmp-t tbody tr:hover{background:var(--surface-2)}
+.cmp-t tbody tr:hover .cmp-go a{background:var(--green-500);border-color:var(--green-500);color:var(--carbon-950)}
+.cmp-m:hover span{color:var(--green-700)}
+.cmp-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (max-width:900px){
+  .cmp{margin-inline:calc(var(--gutter,20px) * -1);border-inline:0}
+  .cmp-t{min-width:860px;font-size:14px}
+  .cmp-t thead th:first-child,.cmp-t tbody th{position:sticky;left:0;z-index:1;background:var(--surface-1);box-shadow:1px 0 0 var(--border-subtle)}
+  .cmp-t tbody tr:hover th{background:var(--surface-2)}
+  .cmp-m img{display:none}.cmp-m span{font-size:12px;display:block;width:112px}.cmp-t tbody th,.cmp-t thead th:first-child{padding-inline:16px 12px}
+}
+</style>
 </head>
 <body>
 
@@ -653,63 +682,15 @@ svg.lucide{width:18px;height:18px;stroke-width:1.5;flex:none}
         <div class="line-lead"><p class="line-depth"><span class="figure">до 75 км</span><span class="label">глибина виконання задач</span></p><p class="lead">Ударні FPV 10″ і 15″, ударна платформа й розвідник 21″, ретранслятор для всієї серії.</p></div>
       </div>
 
-      <div class="acc" id="acc" data-reveal>
-        <article class="acc-item open" tabindex="0" aria-expanded="true">
-          <div class="acc-tab"><span class="label">01</span><span class="v">Жнець 10 Ascent</span><span class="label">10″</span></div>
-          <div class="acc-full">
-            <div class="acc-top"><span class="label">Ударний FPV · 10″</span></div>
-            <div class="acc-img"><img src="assets/img/zh10.webp" alt="Жнець 10 Ascent" loading="lazy"></div>
-            <div class="acc-bottom">
-              <div><h3>Жнець 10 Ascent</h3><span class="spec">дальність до 50 км · до 40 хв у повітрі · до 700 г</span></div>
-              <a class="text-link" href="zhnets-10.html">Детальніше про модель <i data-lucide="arrow-right"></i></a>
-            </div>
-          </div>
-        </article>
-        <article class="acc-item" tabindex="0" aria-expanded="false">
-          <div class="acc-tab"><span class="label">02</span><span class="v">Жнець 15 Ascent</span><span class="label">15″</span></div>
-          <div class="acc-full">
-            <div class="acc-top"><span class="label">Ударний FPV · 15″</span></div>
-            <div class="acc-img"><img src="assets/img/zh15.webp" alt="Жнець 15 Ascent" loading="lazy"></div>
-            <div class="acc-bottom">
-              <div><h3>Жнець 15 Ascent</h3><span class="spec">5 кг до 30 км · 3 кг до 50 км · до 40 хв у повітрі</span></div>
-              <a class="text-link" href="zhnets-15.html">Детальніше про модель <i data-lucide="arrow-right"></i></a>
-            </div>
-          </div>
-        </article>
-        <article class="acc-item" tabindex="0" aria-expanded="false">
-          <div class="acc-tab"><span class="label">03</span><span class="v">Жнець 21 SK</span><span class="label">21″</span></div>
-          <div class="acc-full">
-            <div class="acc-top"><span class="label">Ударна платформа · 21″</span></div>
-            <div class="acc-img"><img src="assets/img/zh21sk.webp" alt="Жнець 21 SK" loading="lazy"></div>
-            <div class="acc-bottom">
-              <div><h3>Жнець 21 SK</h3><span class="spec">дальність до 75 км · до 65 хв у повітрі · Starlink Mini</span></div>
-              <a class="text-link" href="zhnets-21-sk.html">Детальніше про модель <i data-lucide="arrow-right"></i></a>
-            </div>
-          </div>
-        </article>
-        <article class="acc-item" tabindex="0" aria-expanded="false">
-          <div class="acc-tab"><span class="label">04</span><span class="v">Розвідувальний «Жнець»</span><span class="label">21″</span></div>
-          <div class="acc-full">
-            <div class="acc-top"><span class="label">Розвідка · 21″</span></div>
-            <div class="acc-img"><img src="assets/img/zhrecon.webp" alt="Розвідувальний «Жнець»" loading="lazy"></div>
-            <div class="acc-bottom">
-              <div><h3>Розвідувальний «Жнець»</h3><span class="spec">дальність до 75 км · до 65 хв у повітрі</span></div>
-              <a class="text-link" href="zhnets-recon.html">Детальніше про модель <i data-lucide="arrow-right"></i></a>
-            </div>
-          </div>
-        </article>
-        <article class="acc-item" tabindex="0" aria-expanded="false">
-          <div class="acc-tab"><span class="label">05</span><span class="v">Ретранслятор «Жнець 21»</span><span class="label">21″</span></div>
-          <div class="acc-full">
-            <div class="acc-top"><span class="label">Ретранслятор · 21″</span></div>
-            <div class="acc-img"><img class="wire" src="assets/img/wireframe.webp" alt="Креслення платформи 21″" loading="lazy"></div>
-            <div class="acc-bottom">
-              <div><h3>Жнець 21</h3><span class="spec">HORN 300R · Walksnail Avatar VRX</span></div>
-              <a class="text-link" href="zhnets-21-relay.html">Детальніше про модель <i data-lucide="arrow-right"></i></a>
-            </div>
-          </div>
-        </article>
-      </div>
+      <div class="cmp" data-reveal><table class="cmp-t">
+<thead><tr><th scope="col">Модель</th><th scope="col">Призначення</th><th scope="col">Дальність</th><th scope="col">У повітрі</th><th scope="col">Навантаження</th><th scope="col">Зв'язок і керування</th><th scope="col"><span class="cmp-sr">Сторінка моделі</span></th></tr></thead>
+<tbody>
+<tr><th scope="row"><a class="cmp-m" href="zhnets-10.html"><img src="assets/img/zh10.webp" alt="" width="64" height="64" loading="lazy"><span>Жнець 10 Ascent</span></a></th><td>Ударний FPV · 10″</td><td class="cmp-num">до 50 км</td><td class="cmp-num">до 40 хв</td><td>до 700 г</td><td>Walksnail Ascent GT PRO</td><td class="cmp-go"><a href="zhnets-10.html" aria-label="Жнець 10 Ascent: детальніше"><i data-lucide="arrow-right"></i></a></td></tr>
+<tr><th scope="row"><a class="cmp-m" href="zhnets-15.html"><img src="assets/img/zh15.webp" alt="" width="64" height="64" loading="lazy"><span>Жнець 15 Ascent</span></a></th><td>Ударний FPV · 15″</td><td class="cmp-num">до 30 км з 5 кг<br>40–50 км з 3 кг</td><td class="cmp-num">до 40 хв</td><td>до 5 кг</td><td>Walksnail Ascent GT PRO</td><td class="cmp-go"><a href="zhnets-15.html" aria-label="Жнець 15 Ascent: детальніше"><i data-lucide="arrow-right"></i></a></td></tr>
+<tr><th scope="row"><a class="cmp-m" href="zhnets-21-sk.html"><img src="assets/img/zh21sk.webp" alt="" width="64" height="64" loading="lazy"><span>Жнець 21 SK</span></a></th><td>Ударна платформа · 21″</td><td class="cmp-num">до 75 км</td><td class="cmp-num">до 65 хв</td><td>—</td><td>Starlink Mini</td><td class="cmp-go"><a href="zhnets-21-sk.html" aria-label="Жнець 21 SK: детальніше"><i data-lucide="arrow-right"></i></a></td></tr>
+<tr><th scope="row"><a class="cmp-m" href="zhnets-recon.html"><img src="assets/img/zhrecon.webp" alt="" width="64" height="64" loading="lazy"><span>Розвідувальний «Жнець»</span></a></th><td>Розвідка · 21″</td><td class="cmp-num">до 75 км</td><td class="cmp-num">до 65 хв</td><td>камера View PRO A10 pro</td><td>Starlink</td><td class="cmp-go"><a href="zhnets-recon.html" aria-label="Розвідувальний «Жнець»: детальніше"><i data-lucide="arrow-right"></i></a></td></tr>
+<tr><th scope="row"><a class="cmp-m" href="zhnets-21-relay.html"><img src="assets/img/wireframe.webp" alt="" class="wire" width="64" height="64" loading="lazy"><span>Ретранслятор «Жнець 21»</span></a></th><td>Ретранслятор · 21″</td><td class="cmp-num">подовжує зв'язок серії</td><td class="cmp-num">—</td><td>антена HORN 300R</td><td>Walksnail Avatar VRX</td><td class="cmp-go"><a href="zhnets-21-relay.html" aria-label="Ретранслятор «Жнець 21»: детальніше"><i data-lucide="arrow-right"></i></a></td></tr>
+</tbody></table></div>
     </div>
   </section>
 
@@ -809,10 +790,10 @@ svg.lucide{width:18px;height:18px;stroke-width:1.5;flex:none}
         <h4>Лінійка</h4>
         <ul>
           <li><a href="zhnets-10.html">Жнець 10 Ascent</a></li>
-          <li><a href="#line">Жнець 15 Ascent</a></li>
-          <li><a href="#line">Жнець 21 SK</a></li>
-          <li><a href="#line">Розвідувальний «Жнець»</a></li>
-          <li><a href="#line">Ретранслятор «Жнець 21»</a></li>
+          <li><a href="zhnets-15.html">Жнець 15 Ascent</a></li>
+          <li><a href="zhnets-21-sk.html">Жнець 21 SK</a></li>
+          <li><a href="zhnets-recon.html">Розвідувальний «Жнець»</a></li>
+          <li><a href="zhnets-21-relay.html">Ретранслятор «Жнець 21»</a></li>
         </ul>
       </div>
       <div>
