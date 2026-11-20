@@ -201,7 +201,7 @@ svg.lucide{width:18px;height:18px;stroke-width:1.5;flex:none}
 .pin-meta{display:flex;justify-content:space-between;align-items:baseline;gap:24px;max-width:520px;padding-top:16px;border-top:1px solid var(--border-strong)}
 .pin-meta .price{font:500 28px/1 var(--font-mono);font-variant-numeric:tabular-nums;white-space:nowrap}
 .pin-right{display:flex;flex-direction:column}
-.step{min-height:68vh;padding:40px 0;border-top:1px solid var(--border-subtle);display:flex;flex-direction:column;gap:20px;opacity:.3;transition:opacity var(--dur-slow) var(--ease)}
+.step{min-height:68vh;padding:28px 0;border-top:1px solid var(--border-subtle);display:flex;flex-direction:column;justify-content:center;gap:18px;opacity:.3;transition:opacity var(--dur-slow) var(--ease)}
 .step:first-child{border-top:0;padding-top:8px}
 .step.active{opacity:1}
 .step-n{font:500 13px/1 var(--font-mono);color:var(--phosphor)}
@@ -465,7 +465,7 @@ svg.lucide{width:18px;height:18px;stroke-width:1.5;flex:none}
 .pin-rail button:hover{color:var(--text-primary)}
 .pin-rail button:focus-visible{outline:2px solid var(--green-600);outline-offset:4px}
 .pin-rail button[aria-current="step"]{color:var(--text-primary);border-top-color:var(--green-500)}
-.step{min-height:56vh}
+@media (min-width:861px){.step{min-height:40vh}}
 @media (max-width:860px){.pin-rail{display:none}.drawing-zoom{transform:none!important}.callout.dim{opacity:1}}
 @media (prefers-reduced-motion:reduce){.callout.on::after{animation:none;opacity:.9}.drawing-zoom{transition:none}}
 </style>
