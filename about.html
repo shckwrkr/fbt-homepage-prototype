@@ -476,6 +476,17 @@ html.hdr-sc .topbar{border-bottom-width:0}
 .mc-list a:hover .mc-go{color:var(--green-400)}
 @media (max-width:860px){.mc-list{grid-template-columns:minmax(0,1fr)}.mc-list a{padding:24px 20px}}
 </style>
+<style id="ts-css">
+.lf-ts{margin:20px 0 0;min-height:65px}
+.lf-consent{margin:14px 0 0;font:400 13px/1.6 var(--font-body);color:var(--text-muted);max-width:52ch}
+.lf-consent a{color:var(--text-secondary);text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--green-700)}
+.lf-consent a:hover{color:var(--phosphor)}
+</style>
+<style id="fd-css">
+.foot-docs{display:flex;gap:24px;flex-wrap:wrap}
+.foot-docs a{color:var(--text-muted);transition:color var(--dur-fast) var(--ease)}
+.foot-docs a:hover{color:var(--phosphor)}
+</style>
 </head>
 <body>
 
@@ -637,6 +648,8 @@ html.hdr-sc .topbar{border-bottom-width:0}
             <label class="field"><span>Телефон</span><input name="phone" type="tel" autocomplete="tel" placeholder="+380" required></label>
             <label class="field lf-wide"><span>Коментар, необов'язково</span><input name="msg" type="text" placeholder="Модель, кількість, підрозділ"></label>
           </div>
+          <div class="cf-turnstile lf-ts" data-sitekey="1x00000000000000000000AA" data-theme="dark" data-size="flexible"></div>
+          <p class="lf-consent">Відправляючи цю форму, ви підтверджуєте, що ознайомилися та погоджуєтеся з нашою <a href="privacy.html">Політикою конфіденційності</a>.</p>
           <p class="lf-error" id="lf-error" role="alert" hidden>Вкажіть ім'я та телефон.</p>
           <div class="lf-foot">
             <button class="btn btn-primary" type="submit">Надіслати запит <i data-lucide="arrow-right"></i></button>
@@ -685,7 +698,8 @@ html.hdr-sc .topbar{border-bottom-width:0}
       </div>
     </div>
     <div class="foot-legal">
-      <span>ТОВ «ФЛАЇНГ БЬОРДС ТЕК» · ЄДРПОУ 45730305</span>
+      <span>ТОВ «ФЛАЇНГ БЬОРДС ТЕК»</span>
+      <span class="foot-docs"><a href="privacy.html">Політика конфіденційності</a><a href="terms.html">Умови використання сайту</a></span>
       <span>© 2026</span>
     </div>
   </div>
@@ -746,9 +760,14 @@ html.hdr-sc .topbar{border-bottom-width:0}
   var lf=document.getElementById('lead-form');
   lf.addEventListener('submit',function(e){
     e.preventDefault();
-    var ok=true;
+    var ok=true,err=document.getElementById('lf-error');
     ['name','phone'].forEach(function(n){var f=lf.elements[n];var bad=!f.value.trim();f.setAttribute('aria-invalid',bad);if(bad)ok=false});
-    document.getElementById('lf-error').hidden=ok;
+    err.textContent=ok?'':'Вкажіть ім\'я та телефон.';
+    if(ok&&lf.querySelector('.cf-turnstile')){
+      var t=lf.elements['cf-turnstile-response'];
+      if(!t||!t.value){ ok=false; err.textContent='Пройдіть перевірку захисту форми.'; }
+    }
+    err.hidden=ok;
     if(ok)document.getElementById('lf-done').hidden=false;
   });
 
@@ -789,5 +808,6 @@ html.hdr-sc .topbar{border-bottom-width:0}
   }
 })();
 </script>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </body>
 </html>
