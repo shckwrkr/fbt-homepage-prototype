@@ -550,9 +550,28 @@ svg.lucide{width:18px;height:18px;stroke-width:1.5;flex:none}
   .cmp-m img{display:none}.cmp-m span{font-size:12px;display:block;width:112px}.cmp-t tbody th,.cmp-t thead th:first-child{padding-inline:16px 12px}
 }
 </style>
+<style id="topbar-css">
+:root{--header-h:104px}
+.topbar{height:36px;display:flex;align-items:center;background:var(--carbon-900);border-bottom:1px solid var(--border-subtle)}
+.topbar .wrap{display:flex;align-items:center;gap:16px;width:100%}
+.tb-ua{display:inline-flex;align-items:center;gap:8px}
+.tb-ua b{font:500 11px/1 var(--font-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--text-primary)}
+.tb-right{margin-left:auto;display:flex;gap:24px}
+.tb-right a{font:400 12px/1 var(--font-mono);color:var(--text-muted);transition:color var(--dur-fast) var(--ease)}
+.tb-right a:hover{color:var(--phosphor)}
+.site-header{top:36px;height:68px}
+.ua-flag{width:16px;height:11px;flex:none;border-radius:1px;background:linear-gradient(180deg,#0057B7 0 50%,#FFD700 50% 100%);box-shadow:0 0 0 1px rgba(230,234,229,.14)}
+@media (max-width:900px){:root{--header-h:100px}.topbar{height:32px}.site-header{top:32px}.tb-right a[href^="mailto"]{display:none}.tb-right{gap:0}}
+</style>
 </head>
 <body>
 
+<div class="topbar">
+  <div class="wrap">
+    <span class="tb-ua"><span class="ua-flag" aria-hidden="true"></span><b>Вироблено в Україні</b></span>
+    <span class="tb-right"><a href="mailto:info@flyingbirds.tech">info@flyingbirds.tech</a><a href="tel:+380734193736">+380 73 419 3736</a></span>
+  </div>
+</div>
 <header class="site-header">
   <div class="wrap">
     <a class="brand" href="#top" aria-label="Flying Birds Tech — на початок">
@@ -565,7 +584,6 @@ svg.lucide{width:18px;height:18px;stroke-width:1.5;flex:none}
       <a href="#contact">Контакти</a>
     </nav>
     <div class="header-actions">
-      <a class="header-phone" href="tel:+380734193736">+380 73 419 3736</a>
       <a class="btn btn-primary btn-s" href="#contact">Залишити запит</a>
       <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Меню"><i data-lucide="menu"></i></button>
     </div>
@@ -590,7 +608,7 @@ svg.lucide{width:18px;height:18px;stroke-width:1.5;flex:none}
           <h1 class="display hc-title" id="hero-title"><span class="line"><span data-hero>Серія «Жнець»</span></span></h1>
         </div>
         <div class="hc-side">
-          <div data-hero><p class="lead">Дрони для виконання бойових задач на&nbsp;глибину до&nbsp;75&nbsp;км.</p><span class="label hc-note">Власне виробництво · підтримка 24/7</span></div>
+          <div data-hero><p class="lead">Дрони для виконання бойових задач на&nbsp;дистанцію до&nbsp;75&nbsp;км.</p><span class="label hc-note">Власне виробництво · підтримка 24/7</span></div>
           <div class="hero-ctas" data-hero><a class="btn btn-primary" href="#contact">Залишити запит <i data-lucide="arrow-right"></i></a></div>
         </div>
       </div>
@@ -678,8 +696,8 @@ svg.lucide{width:18px;height:18px;stroke-width:1.5;flex:none}
   <section class="chapter line-section" data-theme="light" id="line" aria-labelledby="line-title">
     <div class="wrap">
       <div class="section-head" data-reveal>
-        <h2 class="display" id="line-title">Серія «Жнець» для задач у глибокому тилу противника</h2>
-        <div class="line-lead"><p class="line-depth"><span class="figure">до 75 км</span><span class="label">глибина виконання задач</span></p><p class="lead">Ударні FPV 10″ і 15″, ударна платформа й розвідник 21″, ретранслятор для всієї серії.</p></div>
+        <h2 class="display" id="line-title">Серія «Жнець» для далекобійних задач</h2>
+        <div class="line-lead"><p class="line-depth"><span class="figure">до 75 км</span><span class="label">дистанція виконання задач</span></p><p class="lead">Ударні FPV 10″ і 15″, ударна платформа й розвідник 21″, ретранслятор для всієї серії.</p></div>
       </div>
 
       <div class="cmp" data-reveal><table class="cmp-t">

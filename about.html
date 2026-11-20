@@ -433,9 +433,28 @@ svg.lucide{width:18px;height:18px;stroke-width:1.5;flex:none}
 @media (max-width:860px){.f-grid,.t-cards{grid-template-columns:minmax(0,1fr)}.f-photo{max-width:420px}}
 @media (max-width:560px){.a-stats{grid-template-columns:minmax(0,1fr)}.a-stats div{padding-left:0!important;border-left:0!important;padding-bottom:20px;border-bottom:1px solid var(--border-subtle)}}
 </style>
+<style id="topbar-css">
+:root{--header-h:104px}
+.topbar{height:36px;display:flex;align-items:center;background:var(--carbon-900);border-bottom:1px solid var(--border-subtle)}
+.topbar .wrap{display:flex;align-items:center;gap:16px;width:100%}
+.tb-ua{display:inline-flex;align-items:center;gap:8px}
+.tb-ua b{font:500 11px/1 var(--font-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--text-primary)}
+.tb-right{margin-left:auto;display:flex;gap:24px}
+.tb-right a{font:400 12px/1 var(--font-mono);color:var(--text-muted);transition:color var(--dur-fast) var(--ease)}
+.tb-right a:hover{color:var(--phosphor)}
+.site-header{top:36px;height:68px}
+.ua-flag{width:16px;height:11px;flex:none;border-radius:1px;background:linear-gradient(180deg,#0057B7 0 50%,#FFD700 50% 100%);box-shadow:0 0 0 1px rgba(230,234,229,.14)}
+@media (max-width:900px){:root{--header-h:100px}.topbar{height:32px}.site-header{top:32px}.tb-right a[href^="mailto"]{display:none}.tb-right{gap:0}}
+</style>
 </head>
 <body>
 
+<div class="topbar">
+  <div class="wrap">
+    <span class="tb-ua"><span class="ua-flag" aria-hidden="true"></span><b>Вироблено в Україні</b></span>
+    <span class="tb-right"><a href="mailto:info@flyingbirds.tech">info@flyingbirds.tech</a><a href="tel:+380734193736">+380 73 419 3736</a></span>
+  </div>
+</div>
 <header class="site-header">
   <div class="wrap">
     <a class="brand" href="index.html" aria-label="Flying Birds Tech — на початок">
@@ -448,7 +467,6 @@ svg.lucide{width:18px;height:18px;stroke-width:1.5;flex:none}
       <a href="#contact">Контакти</a>
     </nav>
     <div class="header-actions">
-      <a class="header-phone" href="tel:+380734193736">+380 73 419 3736</a>
       <a class="btn btn-primary btn-s" href="#contact">Залишити запит</a>
       <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Меню"><i data-lucide="menu"></i></button>
     </div>
@@ -467,12 +485,12 @@ svg.lucide{width:18px;height:18px;stroke-width:1.5;flex:none}
     <div class="wrap">
       <nav class="crumbs label" aria-label="Навігація"><a href="index.html">Головна</a><span>/</span><span aria-current="page">Про нас</span></nav>
       <h1 class="display" id="a-title">Від дронів для батька до власного виробництва</h1>
-      <p class="lead">Flying Birds Tech — виробник ударних і розвідувальних дронів «Жнець» в Одесі. Починали з волонтерства, тепер робимо серію для задач у глибокому тилу противника.</p>
+      <p class="lead">Flying Birds Tech — виробник ударних і розвідувальних дронів «Жнець» в Одесі. Починали з волонтерства, тепер робимо серію для далекобійних задач.</p>
       <dl class="a-stats">
         <div><dt>дронів передано і поставлено з початку волонтерської діяльності</dt><dd class="accent">60 000+</dd></div>
         <div><dt>дронів на місяць виробляємо зараз</dt><dd>3 000</dd></div>
         <div><dt>людей у команді R&amp;D і виробництва</dt><dd>30+</dd></div>
-        <div><dt>глибина виконання задач серією «Жнець»</dt><dd>75 км</dd></div>
+        <div><dt>дистанція виконання задач серією «Жнець»</dt><dd>75 км</dd></div>
       </dl>
     </div>
   </section>
