@@ -387,7 +387,7 @@ svg.lucide{width:18px;height:18px;stroke-width:1.5;flex:none}
   .acc-full{grid-template-columns:minmax(0,1fr)}
   .contacts{grid-template-columns:minmax(0,1fr)}
   .contacts > div:nth-child(odd){padding-right:0}
-  .support-list li{border-left:0;padding-left:0;width:100%}
+  .support-list li,.tile-d .support-list li{border-left:0;padding-left:0;padding-right:0;width:100%}
   .hero-ctas .btn{width:100%}
   .brand .brand-full{display:none}
   .brand .brand-mark{display:block}
@@ -457,7 +457,7 @@ svg.lucide{width:18px;height:18px;stroke-width:1.5;flex:none}
 .o-foot svg{width:18px;height:18px;color:var(--text-muted)}
 @media (prefers-reduced-motion:reduce){.step{min-height:0;opacity:1}}
 @media (max-width:1080px){.o-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.p-units{flex-direction:column;align-items:flex-start;gap:16px}}
-@media (max-width:860px){.p-grid,.specs-grid{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:860px){.p-grid,.specs-grid{grid-template-columns:minmax(0,1fr)}.tile-d{flex-direction:column;align-items:flex-start;gap:20px}.tile-d .support-list{flex-direction:column;width:100%;gap:12px}.tile-d .support-list li{border-left:0;padding:6px 0;width:100%}}
 @media (max-width:560px){.o-grid{grid-template-columns:minmax(0,1fr)}.p-stats b{font-size:1.75rem}}
 </style>
 <style id="inside-v2">
