@@ -455,6 +455,22 @@ svg.lucide{width:18px;height:18px;stroke-width:1.5;flex:none}
 .soc svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linejoin:round}
 .soc svg path{fill:currentColor;stroke:none}
 </style>
+<style id="mc-css">
+.mc-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.mc-list a{display:flex;flex-direction:column;gap:14px;height:100%;padding:28px;border:1px solid var(--border-subtle);
+  background:var(--surface-1);color:inherit;transition:border-color var(--dur-fast) var(--ease),background-color var(--dur-fast) var(--ease)}
+.mc-list a:hover{border-color:var(--green-500);background:var(--surface-2)}
+.mc-top{display:flex;justify-content:space-between;gap:16px;align-items:baseline;
+  font:500 12px/1.3 var(--font-mono);letter-spacing:.02em}
+.mc-top b{font-weight:500;color:var(--phosphor)}
+.mc-top time{color:var(--text-muted)}
+.mc-list h3{margin:0;font:400 18px/1.4 var(--font-body);color:var(--text-primary);max-width:34ch;text-wrap:pretty}
+.mc-go{margin-top:auto;display:inline-flex;align-items:center;gap:8px;font:500 12px/1 var(--font-mono);
+  letter-spacing:.08em;text-transform:uppercase;color:var(--text-secondary);transition:color var(--dur-fast) var(--ease)}
+.mc-go svg{width:14px;height:14px}
+.mc-list a:hover .mc-go{color:var(--green-400)}
+@media (max-width:860px){.mc-list{grid-template-columns:minmax(0,1fr)}.mc-list a{padding:24px 20px}}
+</style>
 </head>
 <body>
 
@@ -547,6 +563,22 @@ svg.lucide{width:18px;height:18px;stroke-width:1.5;flex:none}
           <p>Нові рішення та комплектація, розширення серії й виробничих потужностей.</p>
         </li>
       </ol>
+    </div>
+  </section>
+
+
+  <section class="chapter a-media" aria-labelledby="mc-title">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <h2 class="display" id="mc-title">Про нас у медіа</h2>
+        <p class="lead">Матеріали про Flying Birds Tech і засновника компанії.</p>
+      </div>
+      <ul class="mc-list" role="list">
+        <li data-reveal><a href="https://suspilne.media/kharkiv/576531-16-ricnij-harkivanin-vigotovlae-droni-kamikadze-dla-vijskovih-pro-potrebi-bijciv-jomu-rozpoviv-batko-akij-sluzit/" target="_blank" rel="noopener"><span class="mc-top"><b>Суспільне Харків</b><time>25.09.2023</time></span><h3>16-річний школяр з Харкова збирає дрони для військових</h3><span class="mc-go">Читати <i data-lucide="arrow-up-right"></i></span></a></li>
+        <li data-reveal><a href="https://24tv.ua/shkolyar-vigotovlyaye-droni-dlya-viyskovih-skilki-vdalosya-zrobiti_n2418848" target="_blank" rel="noopener"><span class="mc-top"><b>24 Канал</b><time>25.10.2023</time></span><h3>Школяр виготовляє дрони для військових — скільки вдалося зробити</h3><span class="mc-go">Читати <i data-lucide="arrow-up-right"></i></span></a></li>
+        <li data-reveal><a href="https://suspilne.media/odesa/1338090-vid-volontera-do-virobnika-ak-harkivanin-nalagodiv-vipusk-fpv-droniv-v-odesi/" target="_blank" rel="noopener"><span class="mc-top"><b>Суспільне Одеса</b><time>07.07.2026</time></span><h3>Як харків'янин створив виробництво FPV-дронів в Одесі</h3><span class="mc-go">Читати <i data-lucide="arrow-up-right"></i></span></a></li>
+        <li data-reveal><a href="https://www.youtube.com/watch?v=sG7rXN7W24o" target="_blank" rel="noopener"><span class="mc-top"><b>Суспільне Одеса · відео</b><time>07.07.2026</time></span><h3>«Виготовили близько 50 тисяч FPV»: жителі Одеси створюють дрони</h3><span class="mc-go">Дивитися <i data-lucide="arrow-up-right"></i></span></a></li>
+      </ul>
     </div>
   </section>
 
