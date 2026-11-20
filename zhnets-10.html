@@ -476,8 +476,38 @@ svg.lucide{width:18px;height:18px;stroke-width:1.5;flex:none}
 .pin-rail button:focus-visible{outline:2px solid var(--green-600);outline-offset:4px}
 .pin-rail button[aria-current="step"]{color:var(--text-primary);border-top-color:var(--green-500)}
 @media (min-width:861px){.step{min-height:40vh}}
-@media (max-width:860px){.pin-rail{display:none}.drawing-zoom{transform:none!important}.callout.dim{opacity:1}}
-@media (prefers-reduced-motion:reduce){.callout.on::after{animation:none;opacity:.9}.drawing-zoom{transition:none}}
+@media (max-width:860px){
+  .pin-grid{display:flex;flex-direction:column;gap:16px}
+  .pin-left{display:flex;flex-direction:column;align-items:center;width:100%}
+  .pin-left h2{font-size:clamp(1.75rem,5vw,2.25rem);text-align:center}
+  .drawing{width:100%;max-width:min(300px,78vw);aspect-ratio:1/1;margin:12px auto 0}
+  .drawing-zoom{transform:none!important}
+  .callout{width:36px;height:36px}
+  .pin-meta{width:100%;max-width:min(300px,78vw);justify-content:center;padding-top:10px}
+  /* Mobile Interactive Step Tabs */
+  .pin-rail{display:flex;width:100%;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;gap:6px;margin:16px 0 0;padding:2px 0 6px;list-style:none}
+  .pin-rail::-webkit-scrollbar{display:none}
+  .pin-rail li{flex:1 0 auto}
+  .pin-rail button{display:inline-flex;flex-direction:row;align-items:center;gap:6px;padding:8px 12px;background:var(--surface-1);border:1px solid var(--border-subtle);border-top:1px solid var(--border-subtle);font:500 12px/1 var(--font-mono);color:var(--text-muted);white-space:nowrap}
+  .pin-rail button b{font:500 12px/1 var(--font-body)}
+  .pin-rail button[aria-current="step"]{background:var(--carbon-950);color:var(--phosphor);border-color:var(--carbon-950)}
+  /* Step Card */
+  .pin-right{width:100%;margin-top:0}
+  .step{display:none;min-height:auto;opacity:1;background:var(--surface-1);border:1px solid var(--border-subtle);padding:20px;border-radius:0}
+  .step.active{display:block;animation:step-in .25s var(--ease)}
+  @keyframes step-in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+  .step-n{display:inline-block;font:500 12px/1 var(--font-mono);color:var(--phosphor);margin-bottom:8px}
+  .step h3{font-size:1.25rem;margin:0 0 10px}
+  .step p{font-size:14px;line-height:1.5;margin:0 0 16px;color:var(--text-secondary)}
+  .step .specs{margin:0}
+  /* Nav footer for step card */
+  .step-nav-m{display:flex;justify-content:space-between;align-items:center;margin-top:16px;padding-top:14px;border-top:1px solid var(--border-subtle)}
+  .step-nav-m button{all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:4px;padding:6px 12px;background:var(--surface-2);border:1px solid var(--border-subtle);font:500 12px/1 var(--font-mono);color:var(--text-primary)}
+  .step-nav-m button:disabled{opacity:.35;cursor:default}
+  .step-nav-m span{font:500 11px/1 var(--font-mono);color:var(--text-muted)}
+}
+@media (min-width:861px){.step-nav-m{display:none!important}}
+@media (prefers-reduced-motion:reduce){.callout.on::after{animation:none;opacity:.9}.drawing-zoom{transition:none}.step.active{animation:none}}
 </style>
 <style id="mods-css">
 .mods .section-head{margin-bottom:48px}
@@ -512,55 +542,7 @@ svg.lucide{width:18px;height:18px;stroke-width:1.5;flex:none}
 .lb button:focus-visible{outline:2px solid var(--phosphor);outline-offset:2px}
 @media (max-width:860px){.mod,.mod.no-ph .mod-info{grid-template-columns:minmax(0,1fr)}.mod.no-ph .mod-info .specs{grid-column:auto;grid-row:auto}}
 </style>
-<style id="orbit-css">
-.orbit{padding:0;background:#0b0f0b;color:var(--carbon-50)}
-.orbit-stage{position:relative;overflow:clip;min-height:min(100svh,900px);display:grid}
-.orbit-poster,.orbit-cv{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:62% 50%}
-.orbit-cv{opacity:0;transition:opacity .4s var(--ease)}
-.orbit.ready .orbit-cv{opacity:1}
-.orbit.ready .orbit-poster{visibility:hidden}
-.orbit-stage::after{content:"";position:absolute;inset:0;pointer-events:none;
-  background:linear-gradient(90deg,rgba(8,10,8,.92) 0%,rgba(8,10,8,.7) 30%,rgba(8,10,8,0) 58%),linear-gradient(0deg,rgba(8,10,8,.6),rgba(8,10,8,0) 30%)}
-.orbit-ui{position:relative;z-index:1;width:100%;display:grid;grid-template-columns:minmax(0,440px);align-content:center;gap:40px;padding-block:clamp(96px,12vh,140px) clamp(48px,8vh,96px)}
-.orbit-head h2{font-size:clamp(2rem,3.6vw,3.25rem);max-width:14ch}
-.orbit-head .lead{margin-top:20px;max-width:36ch;color:var(--carbon-200)}
-.orbit-rail{display:none}
-.orbit-groups{display:grid;gap:28px}
-.og-k{display:flex;gap:12px;align-items:baseline;margin:0 0 8px;font:500 12px/1 var(--font-mono);letter-spacing:.02em;color:var(--phosphor)}
-.og-k span{color:var(--carbon-400)}
-.og dl{margin:0;border-top:1px solid rgba(255,255,255,.22)}
-.og dl div{display:flex;justify-content:space-between;gap:24px;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.12)}
-.og dt{color:var(--carbon-300);font-size:15px}
-.og dd{margin:0;font:500 15px/1.4 var(--font-mono);text-align:right;color:var(--carbon-50)}
-.orbit-note{position:absolute;z-index:1;right:clamp(16px,4vw,48px);bottom:16px;margin:0;font:500 11px/1 var(--font-mono);letter-spacing:.02em;color:var(--carbon-400)}
-/* scroll mode (JS on, motion allowed) */
-.orbit.scrub .orbit-track{height:420vh}
-.orbit.scrub .orbit-stage{position:sticky;top:0;height:100svh;min-height:0}
-.orbit.scrub .orbit-groups{display:grid;gap:0}
-.orbit.scrub .og{grid-area:1/1;opacity:0;translate:0 16px;visibility:hidden;transition:opacity .45s var(--ease),translate .45s var(--ease),visibility 0s .45s}
-.orbit.scrub .og.on{opacity:1;translate:0 0;visibility:visible;transition:opacity .45s var(--ease),translate .45s var(--ease),visibility 0s}
-.orbit.scrub .orbit-rail{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;list-style:none;margin:28px 0 0;padding:0}
-.orbit-rail li{display:flex;flex-direction:column;gap:6px;padding-top:10px;border-top:2px solid rgba(255,255,255,.18);font:500 11px/1.25 var(--font-mono);color:var(--carbon-400);transition:color .3s,border-color .3s}
-.orbit-rail li span{color:inherit}
-.orbit-rail li.on{color:var(--carbon-50);border-top-color:var(--green-500)}
-.og-big dl{border-top:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
-.og-big dl div{flex-direction:column;justify-content:flex-start;gap:8px;padding:16px 0 0;border-bottom:0;border-top:2px solid var(--green-500)}
-.og-big dd{order:-1;text-align:left;white-space:nowrap;font:500 clamp(1.25rem,1.9vw,1.6rem)/1 var(--font-mono);color:var(--phosphor)}
-.og-big dt{font-size:13px}
-@media (max-width:860px){
-  .orbit-poster,.orbit-cv{object-position:70% 40%}
-  .orbit-stage::after{background:linear-gradient(0deg,rgba(8,10,8,.95) 0%,rgba(8,10,8,.82) 42%,rgba(8,10,8,0) 66%),linear-gradient(180deg,rgba(8,10,8,.75),rgba(8,10,8,0) 26%)}
-  .orbit-ui{grid-template-columns:minmax(0,1fr);align-content:space-between;padding-block:88px 48px;gap:24px}
-  .orbit-head .lead{display:none}
-  .orbit.scrub .orbit-rail{margin-top:16px}
-  .orbit-rail li{font-size:10px}
-  .og dl div{padding:11px 0}
-  .og dt,.og dd{font-size:14px}
-  .og-big dd{font-size:1.3rem}
-  .orbit-note{right:auto;left:16px;bottom:14px;font-size:10px}
-}
-@media (prefers-reduced-motion:reduce){.orbit-cv,.orbit .og{transition:none!important}}
-</style>
+
 <style>
 .pc{min-height:100dvh;display:flex;flex-direction:column;justify-content:center;background:#05070a}
 .pc::before{display:none}
@@ -781,28 +763,7 @@ html.hdr-sc .topbar{border-bottom-width:0;visibility:hidden;pointer-events:none}
     </div>
   </section>
 
-  <section class="chapter orbit" id="specs" aria-labelledby="specs-title">
-    <div class="orbit-track">
-      <div class="orbit-stage">
-        <img class="orbit-poster" src="assets/img/orbit/f000.webp" alt="Жнець 10 на студійному фоні" width="1280" height="716" loading="lazy" decoding="async">
-        <canvas class="orbit-cv" aria-hidden="true"></canvas>
-        <div class="orbit-ui wrap">
-          <div class="orbit-head">
-            <h2 class="display" id="specs-title">Технічні характеристики</h2>
-            <p class="lead">Комплектацію під задачу підрозділу погоджуємо до поставки.</p>
-            <ol class="orbit-rail" aria-hidden="true"><li><span>01</span>Платформа</li><li><span>02</span>Відео та керування</li><li><span>03</span>Борт</li><li><span>04</span>Можливості</li></ol>
-          </div>
-          <div class="orbit-groups">
-        <section class="og" data-og="0" aria-label="Платформа"><p class="og-k"><span>01</span>Платформа</p><dl><div><dt>Рама / пропелери</dt><dd>10″</dd></div><div><dt>Мотори</dt><dd>900kv</dd></div><div><dt>Регулятор обертів</dt><dd>ESC 60A</dd></div></dl></section>
-        <section class="og" data-og="1" aria-label="Відео та керування"><p class="og-k"><span>02</span>Відео та керування</p><dl><div><dt>Камера та VTX</dt><dd>Walksnail Ascent GT PRO</dd></div><div><dt>Керування</dt><dd>VRX + ELRS (S-Bus/CRSF)</dd></div></dl></section>
-        <section class="og" data-og="2" aria-label="Борт"><p class="og-k"><span>03</span>Борт</p><dl><div><dt>Польотний контролер</dt><dd>F405</dd></div><div><dt>Акумулятор</dt><dd>6S4P</dd></div><div><dt>Плата ініціації</dt><dd>Гілляка V3</dd></div></dl></section>
-        <section class="og og-big" data-og="3" aria-label="Можливості"><p class="og-k"><span>04</span>Можливості</p><dl><div><dt>Дальність</dt><dd>до 50 км</dd></div><div><dt>Час у повітрі</dt><dd>до 40 хв</dd></div><div><dt>Навантаження</dt><dd>до 700 г</dd></div></dl></section>
-          </div>
-        </div>
-        <p class="orbit-note">Обліт згенеровано ШІ за студійним фото</p>
-      </div>
-    </div>
-  </section>
+
 
   <section class="chapter" data-theme="light" id="support" aria-labelledby="sup-title">
     <div class="wrap">
@@ -1079,24 +1040,62 @@ html.hdr-sc .topbar{border-bottom-width:0;visibility:hidden;pointer-events:none}
   var steps=[].slice.call(document.querySelectorAll('[data-step]'));
   var zoom=document.querySelector('.drawing-zoom'), rail=document.getElementById('pin-rail'), railBtns=[];
   var wide=matchMedia('(min-width:861px)'), still=matchMedia('(prefers-reduced-motion: reduce)');
-  function goTo(i){steps[i].scrollIntoView({behavior:still.matches?'auto':'smooth',block:'center'})}
+  function goTo(i){
+    if(wide.matches){
+      steps[i].scrollIntoView({behavior:still.matches?'auto':'smooth',block:'center'});
+    } else {
+      setStep(i);
+    }
+  }
   if(rail){steps.forEach(function(s,i){
     var li=document.createElement('li'), b=document.createElement('button');
     b.type='button'; b.innerHTML='<span>'+('0'+(i+1)).slice(-2)+'</span><b>'+s.querySelector('h3').textContent+'</b>';
     b.addEventListener('click',function(){goTo(i)}); li.appendChild(b); rail.appendChild(li); railBtns.push(b);
+
+    // Add mobile bottom stepper navigation inside each step
+    var nav=document.createElement('div');
+    nav.className='step-nav-m';
+    nav.innerHTML='<button type="button" class="s-prev" '+(i===0?'disabled':'')+' aria-label="Попередній етап">← Попередній</button>' +
+      '<span>'+('0'+(i+1)).slice(-2)+' / '+('0'+steps.length).slice(-2)+'</span>' +
+      '<button type="button" class="s-next" '+(i===steps.length-1?'disabled':'')+' aria-label="Наступний етап">Наступний →</button>';
+    var pBtn=nav.querySelector('.s-prev'), nBtn=nav.querySelector('.s-next');
+    if(pBtn) pBtn.addEventListener('click',function(){if(i>0)setStep(i-1)});
+    if(nBtn) nBtn.addEventListener('click',function(){if(i<steps.length-1)setStep(i+1)});
+    s.appendChild(nav);
   })}
   callouts.forEach(function(c,i){c.addEventListener('click',function(){goTo(i)})});
   function setStep(n){
     steps.forEach(function(s,i){s.classList.toggle('active',i===n)});
     callouts.forEach(function(c,i){c.classList.toggle('on',i===n);c.classList.toggle('dim',n<callouts.length&&i!==n)});
-    railBtns.forEach(function(b,i){if(i===n)b.setAttribute('aria-current','step');else b.removeAttribute('aria-current')});
+    railBtns.forEach(function(b,i){
+      if(i===n){
+        b.setAttribute('aria-current','step');
+        if(!wide.matches&&b.scrollIntoView){b.scrollIntoView({behavior:'smooth',inline:'nearest',block:'nearest'})}
+      }else{b.removeAttribute('aria-current')}
+    });
     if(zoom){var c=callouts[n];
       if(c&&wide.matches&&!still.matches){zoom.style.transformOrigin=c.style.left+' '+c.style.top;zoom.style.transform='scale(1.18)'}
       else zoom.style.transform='';}
   }
-  if(!window.gsap||!window.ScrollTrigger||matchMedia('(prefers-reduced-motion: reduce)').matches){steps.forEach(function(s){s.classList.add('active')});}
-  else{
-    setStep(0);
+
+  // Mobile swipe support
+  var pRight=document.getElementById('pin-right');
+  if(pRight){
+    var touchStartX=0, touchStartY=0;
+    pRight.addEventListener('touchstart',function(e){touchStartX=e.changedTouches[0].clientX;touchStartY=e.changedTouches[0].clientY},{passive:true});
+    pRight.addEventListener('touchend',function(e){
+      var dx=e.changedTouches[0].clientX-touchStartX, dy=e.changedTouches[0].clientY-touchStartY;
+      if(Math.abs(dx)>40&&Math.abs(dx)>Math.abs(dy)){
+        var cur=steps.findIndex(function(s){return s.classList.contains('active')});
+        if(cur<0)cur=0;
+        if(dx<0&&cur<steps.length-1)setStep(cur+1);
+        else if(dx>0&&cur>0)setStep(cur-1);
+      }
+    },{passive:true});
+  }
+
+  setStep(0);
+  if(window.gsap&&window.ScrollTrigger&&!still.matches){
     var mm=gsap.matchMedia();
     mm.add('(min-width:861px)',function(){
       var left=document.getElementById('pin-left'), right=document.getElementById('pin-right');
@@ -1104,50 +1103,14 @@ html.hdr-sc .topbar{border-bottom-width:0;visibility:hidden;pointer-events:none}
       steps.forEach(function(s,i){ScrollTrigger.create({trigger:s,start:'top 55%',end:'bottom 55%',onToggle:function(self){if(self.isActive)setStep(i)}})});
       return function(){steps.forEach(function(s){s.classList.remove('active')});setStep(0)};
     });
-    mm.add('(max-width:860px)',function(){steps.forEach(function(s){s.classList.add('active')});callouts.forEach(function(c){c.classList.remove('dim')})});
+    mm.add('(max-width:860px)',function(){
+      var cur=steps.findIndex(function(s){return s.classList.contains('active')});
+      setStep(cur>=0?cur:0);
+    });
   }
 })();
 </script>
-<script>
-(function(){
-  var sec=document.getElementById('specs'); if(!sec||!sec.classList.contains('orbit'))return;
-  if(matchMedia('(prefers-reduced-motion: reduce)').matches)return; // static photo + all groups
-  var N=64, cv=sec.querySelector('.orbit-cv'), ctx=cv.getContext('2d'), track=sec.querySelector('.orbit-track');
-  var groups=[].slice.call(sec.querySelectorAll('.og')), rail=[].slice.call(sec.querySelectorAll('.orbit-rail li'));
-  var narrow=matchMedia('(max-width:860px)').matches, dir='assets/img/orbit/'+(narrow?'m/':''), imgs=[], cur=-1, grp=-1, started=false;
-  sec.classList.add('scrub');
-  function load(){ if(started)return; started=true;
-    for(var i=0;i<N;i++){var im=new Image(); im.decoding='async'; im.src=dir+'f'+('00'+i).slice(-3)+'.webp'; imgs.push(im);
-      if(i===0)im.onload=function(){sec.classList.add('ready');cur=-1;tick()};}
-  }
-  new IntersectionObserver(function(e){if(e[0].isIntersecting)load()},{rootMargin:'100% 0px'}).observe(sec);
-  function size(){var r=cv.getBoundingClientRect(),d=Math.min(devicePixelRatio||1,2);cv.width=Math.round(r.width*d);cv.height=Math.round(r.height*d);cur=-1}
-  function draw(i){ // nearest loaded frame, cover-fit like object-fit/position
-    var im=imgs[i], k=i; while(k>0&&!(im&&im.complete&&im.naturalWidth)){im=imgs[--k]} if(!im||!im.naturalWidth)return;
-    var W=cv.width,H=cv.height,iw=im.naturalWidth,ih=im.naturalHeight,s,x,y;
-    if(narrow){s=W*1.5/iw;x=W*.5-iw*s*.6;y=H*.42-ih*s*.5}
-    else{s=Math.min(Math.max(W/iw,H/ih)*.74,W*.82/iw);x=W*.69-iw*s*.6;y=H-ih*s} // drone right of the text, floor on the bottom edge
-    var w=iw*s,h=ih*s,g;
-    ctx.fillStyle='#0b0f0b';ctx.fillRect(0,0,W,H);ctx.drawImage(im,x,y,w,h);
-    if(!narrow){ // feather the frame edges into the background
-      g=ctx.createLinearGradient(0,y,0,y+h*.3);g.addColorStop(0,'#0b0f0b');g.addColorStop(1,'rgba(11,15,11,0)');ctx.fillStyle=g;ctx.fillRect(0,y,W,h*.3);
-      g=ctx.createLinearGradient(x+w,0,x+w*.8,0);g.addColorStop(0,'#0b0f0b');g.addColorStop(1,'rgba(11,15,11,0)');ctx.fillStyle=g;ctx.fillRect(x+w*.8,0,W-x-w*.8,H);
-      ctx.fillStyle='#0b0f0b';ctx.fillRect(x+w-1,0,W,H);
-      g=ctx.createLinearGradient(x,0,x+w*.25,0);g.addColorStop(0,'#0b0f0b');g.addColorStop(1,'rgba(11,15,11,0)');ctx.fillStyle=g;ctx.fillRect(0,0,x+w*.25,H);
-    }
-  }
-  function tick(){
-    var r=track.getBoundingClientRect(), span=r.height-innerHeight, p=span>0?Math.min(1,Math.max(0,-r.top/span)):0;
-    var f=Math.round(p*(N-1)), g=Math.min(groups.length-1,Math.floor(p*groups.length));
-    if(f!==cur){cur=f;draw(f)}
-    if(g!==grp){grp=g;groups.forEach(function(el,i){el.classList.toggle('on',i===g)});rail.forEach(function(el,i){el.classList.toggle('on',i===g)})}
-  }
-  var q=false; function onScroll(){if(!q){q=true;requestAnimationFrame(function(){q=false;tick()})}}
-  addEventListener('scroll',onScroll,{passive:true});
-  addEventListener('resize',function(){size();tick()});
-  size(); tick();
-})();
-</script>
+
 <script id="topbar-js">
 (function(){
   var r=document.documentElement;
